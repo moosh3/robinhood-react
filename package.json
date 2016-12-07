@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/webpack -p"
+    "build": "./node_modules/.bin/webpack -p",
+    "serve": "./node_modules/.bin/webpack-dev-server --progress"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/aleccunningham/reactjs-webpack/issues"
   },
-  "homepage": "https://github.com/aleccunningham/reactjs-webpack#readme"
+  "homepage": "https://github.com/aleccunningham/reactjs-webpack#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.24.1"
+  }
 }

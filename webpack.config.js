@@ -9,10 +9,11 @@
  */
 
  /* eslint-disable global-require */
-
 const path = require('path');
 const webpack = require('webpack');
 const pkg = require('./package.json');
+
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 const config = {
@@ -53,7 +54,8 @@ const config = {
             compress: {
                 warnings: false
             }
-        })
+        }),
+    new HtmlWebpackPlugin(),
   ]
 }
 
