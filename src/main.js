@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import FastClick from 'fastclick';
 
-import Layout from './Layout.js';
+import Layout from './components/Layout/Layout.js';
 
 const rootElement = document.getElementById('root');
 
 function render(Root) {
   ReactDOM.render(
     <AppContainer>
-      <Root />
+      <Layout />
     </AppContainer>,
     rootElement
   );

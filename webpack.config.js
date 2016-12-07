@@ -20,10 +20,6 @@ const config = {
   // Base directory for entry option
   context: __dirname,
 
-  noParse: [
-    './src/assets/js/',
-  ]
-
   // Entry point for bundle
   entry: {
     main: ['./src/main.js'],
@@ -49,7 +45,16 @@ const config = {
         }
       }
     ]
-  }
+  },
+
+  // Third party loaders and plugins
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+  ]
 }
 
 module.exports = config;
