@@ -1,0 +1,19 @@
+{
+  "name": "reactjs-webpack",
+  "version": "1.0.0",
+  "description": "Barebones ReactJS app using webpack",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleccunningham/reactjs-webpack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleccunningham/reactjs-webpack/issues"
+  },
+  "homepage": "https://github.com/aleccunningham/reactjs-webpack#readme"
+}
