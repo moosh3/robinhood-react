@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { render } from "react-dom";
-import FastClick from 'fastclick';
-
+import ReactDOM from 'react-dom';
 import App from './components/App';
 
 const rootEl = document.getElementById('root');
-// Remove 300ms tap delay on mobile devices
-attachFastClick.attach(document.body)
 
-render(
+ReactDOM.render(
   <App />,
-  containerEl
+  rootEl
 );
