@@ -1,20 +1,11 @@
  /* eslint-disable global-require */
 const path = require('path');
 const webpack = require('webpack');
-const pkg = require('./package.json');
 
-
-var WebpackDevServer = require("webpack-dev-server");
-var WebpackDevServerConfig = new WebpackDevServer({
-  contentBase: __dirname + 'dist',
-});
-
-var mainPath = path.resolve(__dirname + 'src', 'index.js');
+var mainPath = path.resolve(__dirname, 'src', 'main.js');
 var buildPath = path.resolve(__dirname, 'public', 'build');
 
 const config = {
-  // Base directory for entry option
-  context: __dirname,
   // Entry point for bundle
   entry: [
     // For hot style updates
@@ -51,7 +42,7 @@ const config = {
                 warnings: false
             }
         }),
-    new Webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
 

@@ -1,9 +1,15 @@
 var Webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var webpackConfig = require('./../webpack.config.js');
+var webpackConfig = require('./webpack.config.js');
 var path = require('path');
 var fs = require('fs');
-var mainPath = path.resolve(__dirname, '..', 'src', 'index.js');
+var mainPath = path.resolve(__dirname, '..', 'src', 'main.js');
+var buildPath = path.resolve(__dirname, 'public', 'build');
+
+var WebpackDevServer = require("webpack-dev-server");
+var WebpackDevServerConfig = new WebpackDevServer({
+  contentBase: mainPath,
+});
+
 
 module.exports = function () {
 
@@ -30,7 +36,7 @@ module.exports = function () {
     // We need to tell Webpack to serve our bundled application
     // from the build path. When proxying:
     // http://localhost:3000/build -> http://localhost:8080/build
-    publicPath: '/dist/',
+    publicPath: '/build/',
 
     // Configure hot replacement
     hot: true,
