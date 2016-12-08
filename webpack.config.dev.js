@@ -13,19 +13,6 @@ const path = require('path');
 const webpack = require('webpack');
 const pkg = require('./package.json');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + '/src/index.html',
-  filename: 'index.html',
-  inject: 'body'
-});
-
-
-//var WebpackDevServer = require("webpack-dev-server");
-//var WebpackDevServerConfig = new WebpackDevServer({
-//  contentBase: __dirname + 'dist',
-//});
-
 const config = {
 
   // Base directory for entry option
@@ -33,7 +20,7 @@ const config = {
 
   // Entry point for bundle
   entry: {
-    main: ['./src/index.js'],
+    './src/index.js',
     'webpack-hot-middleware/client'
   },
 
@@ -48,6 +35,10 @@ const config = {
     loaders: [
       {
         test: /\.jsx?$/, // Match both .js and .jsx files
+        include: [
+          path.resolve(__dirname, './src/components'),
+          path.resolve(__dirname, './src/index.js'),
+        ],
         exclude: /node_modules/,
         loader: "babel",
       },
@@ -66,6 +57,8 @@ const config = {
             }
         }),
     new HtmlWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ]
 }
 
