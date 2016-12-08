@@ -13,8 +13,17 @@ const path = require('path');
 const webpack = require('webpack');
 const pkg = require('./package.json');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: __dirname + '/src/index.html',
+  filename: 'index.html',
+  inject: 'body'
+});
 
+var WebpackDevServer = require("webpack-dev-server");
+var WebpackDevServerConfig = new WebpackDevServer({
+  contentBase: __dirname + 'dist',
+})
 
 const config = {
 
@@ -28,22 +37,21 @@ const config = {
 
   // Options affecting output of bundle
   output: {
-    path: path.resolve(__dirname, './public/dist'),
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
-    library: 'app',
   },
 
   // Options affecting normal modules
   module: {
     loaders: [
       {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
+        test: /\.js$/,
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react']
-        }
+        loader: 'babel'
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
       }
     ]
   },
@@ -55,7 +63,6 @@ const config = {
                 warnings: false
             }
         }),
-    new HtmlWebpackPlugin(),
   ]
 }
 

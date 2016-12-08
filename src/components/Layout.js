@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import Navigation from './Navigation';
 
 export default class Layout extends Component {
   render() {
     return (
-      <div id="container">
+      <div>
         <Header />
-        <Navigation />
           <section>
             <p>Some smaller text</p>
           </section>
