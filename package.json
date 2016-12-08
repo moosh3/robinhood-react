@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/webpack -p",
-    "serve": "./node_modules/.bin/webpack-dev-server --progress",
-    "start": "node server.js"
+    "serve": "./node_modules/.bin/webpack-dev-server --progress --inline --hot"
   },
   "repository": {
     "type": "git",

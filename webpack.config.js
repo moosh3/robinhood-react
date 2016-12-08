@@ -2,14 +2,11 @@
 const path = require('path');
 const webpack = require('webpack');
 
-var mainPath = path.resolve(__dirname, 'src', 'main.js');
-var buildPath = path.resolve(__dirname, 'public', 'build');
+var mainPath = path.resolve(__dirname, 'index.js');
 
 const config = {
   // Entry point for bundle
   entry: [
-    // For hot style updates
-    'webpack/hot/dev-server',
     // The script refreshing the browser on none hot updates
     'webpack-dev-server/client?http://localhost:8080',
     // Our application
@@ -17,9 +14,9 @@ const config = {
   ],
   // Options affecting output of bundle
   output: {
-    path: buildPath,
+    path: __dirname,
     filename: 'bundle.js',
-    publicPath: '/build/'
+    publicPath: '/static/'
   },
   // Options affecting normal modules
   module: {
@@ -42,7 +39,6 @@ const config = {
                 warnings: false
             }
         }),
-    new webpack.HotModuleReplacementPlugin()
   ]
 }
 
