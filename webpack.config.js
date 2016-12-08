@@ -1,48 +1,35 @@
-/**
- * Webpack Boilerplate
- * https://github.com/aleccunningham/reactjs-webpack
- *
- * Copyright 2016 Marjoram Digital
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
  /* eslint-disable global-require */
 const path = require('path');
 const webpack = require('webpack');
 const pkg = require('./package.json');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + '/src/index.html',
-  filename: 'index.html',
-  inject: 'body'
+
+var WebpackDevServer = require("webpack-dev-server");
+var WebpackDevServerConfig = new WebpackDevServer({
+  contentBase: __dirname + 'dist',
 });
 
-
-//var WebpackDevServer = require("webpack-dev-server");
-//var WebpackDevServerConfig = new WebpackDevServer({
-//  contentBase: __dirname + 'dist',
-//});
+var mainPath = path.resolve(__dirname + 'src', 'index.js');
+var buildPath = path.resolve(__dirname, 'public', 'build');
 
 const config = {
-
   // Base directory for entry option
   context: __dirname,
-
   // Entry point for bundle
-  entry: {
-    main: ['./src/index.js'],
-    'webpack-hot-middleware/client'
-  },
-
+  entry: [
+    // For hot style updates
+    'webpack/hot/dev-server',
+    // The script refreshing the browser on none hot updates
+    'webpack-dev-server/client?http://localhost:8080',
+    // Our application
+    mainPath
+  ],
   // Options affecting output of bundle
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    path: buildPath,
+    filename: 'bundle.js',
+    publicPath: '/build/'
   },
-
   // Options affecting normal modules
   module: {
     loaders: [
@@ -57,7 +44,6 @@ const config = {
       }
     ]
   },
-
   // Third party loaders and plugins
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
@@ -65,7 +51,7 @@ const config = {
                 warnings: false
             }
         }),
-    new HtmlWebpackPlugin(),
+    new Webpack.HotModuleReplacementPlugin()
   ]
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import FastClick from 'fastclick';
+//import FastClick from 'fastclick';
 
 import Demo from './components/Demo.js';
 
@@ -14,11 +14,5 @@ function render(Root) {
     rootElement
   );
 }
-
-// Eliminates the 300ms delay between a physical tap
-// and the firing of a click event on mobile browsers
-// https://github.com/ftlabs/fastclick
-FastClick.attach(document.body);
-
 
 render(Demo);

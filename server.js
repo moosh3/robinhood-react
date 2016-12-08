@@ -1,27 +1,16 @@
-var path = require('path');
 var express = require('express');
-var webpack = require('webpack');
-var config = require('./webpack.config.dev');
+var path = require('path');
 
-var port = 3000;
 var app = express();
-var compiler = webpack(config);
 
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-}));
+var isProduction = process.env.NODE_ENV === 'production';
+var port = isProduction ? process.env.PORT : 3000;
+var publicPath = path.resolve(__dirname, 'public');
 
-app.use(require('webpack-hot-middleware')(compiler));
+// We point to our static assets
+app.use(express.static(publicPath));
 
-app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.listen(port, function onAppListening(err) {
-    if (err) {
-        console.error(err);
-    } else {
-        console.info('==> 🚧  Webpack development server listening on port %s', port);
-    }
+// And run the server
+app.listen(port, function () {
+  console.log('Server running on port ' + port);
 });
