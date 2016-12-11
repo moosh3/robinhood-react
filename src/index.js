@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/Search';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import todoApp from './reducers';
+import App from './components/App';
 
-const rootEl = document.getElementById('root');
+let store = createStore(todoApp)
 
 ReactDOM.render(
-  <App items={ libraries } />,
-  rootEl
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
