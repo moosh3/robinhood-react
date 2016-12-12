@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import todoApp from './reducers';
-import App from './components/App';
+import routes from './routes.js';
 
 let store = createStore(todoApp)
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Provider store={store}>{routes}</Provider>,
   document.getElementById('root')
 );

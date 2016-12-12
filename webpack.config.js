@@ -16,7 +16,7 @@ const config = {
   ],
   // Options affecting output of bundle
   output: {
-    path: path.resolve(__dirname, 'src', 'static', 'js')
+    path: path.resolve(__dirname, 'src', 'static', 'js'),
     filename: 'bundle.js',
     publicPath: '/js/'
   },

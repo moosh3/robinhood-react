@@ -27,4 +27,4 @@ let AddTodo = ({ dispatch }) => {
 }
 AddTodo = connect()(AddTodo)
 
-export default AddTodo
+export default AddTodoContainer
