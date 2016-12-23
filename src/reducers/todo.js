@@ -1,9 +1,8 @@
-import { combineReducers } from 'redux';
 import { VisibilityFilters } from '../actions/index';
 
 const { SHOW_ALL } = VisibilityFilters
 
-function todos(state = [], action) {
+const todos = (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
       return [
@@ -25,4 +24,4 @@ function todos(state = [], action) {
     default:
       return state
   }
-}
+};

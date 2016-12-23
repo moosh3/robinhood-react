@@ -1,14 +1,12 @@
-import * as types from '../actions/states';
+import * as types from '../actions/types';
 
 const initialState = {
   searchType: '',
   title: ''
 };
 
-const searchLayoutReducer = function(state = initialState, action) {
-
+const searchLayoutReducer = (state = initialState, action) => {
   switch(action.type) {
-
     case types.LOAD_SEARCH_LAYOUT:
       return Object.assign({}, state, {
         searchType: action.searchType,
@@ -16,9 +14,7 @@ const searchLayoutReducer = function(state = initialState, action) {
       });
 
   }
-
   return state;
-
 }
 
 export default searchLayoutReducer;
