@@ -1,6 +1,6 @@
 // @flow
 
-import *  from '../actions/actionTypes';
+import *  from '../actions/index';
 
 const initialState = {
   username: '',

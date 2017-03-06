@@ -7,9 +7,9 @@ export class Session {
     this.credentials = credentials
   }
 
-  var _url = 'https://api.robinhood.com/';
+  let _url = 'https://api.robinhood.com/';
 
-  var _options = opts || {},
+  let _options = opts || {},
     // Private API Endpoints
     _endpoints = {
       login:  'api-token-auth/',

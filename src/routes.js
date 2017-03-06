@@ -8,9 +8,9 @@ import IndexPage from './components/containers/IndexPage';
 import NotFoundPage from './components/containers/NotFoundPage';
 
 const routes = (
-  <Route path="/" component={ Layout }>
-    <IndexRoute component={ IndexPage }/>
-    <Route path="*" component={ NotFoundPage }/>
+  <Route path="/" component={Layout}>
+    <IndexRoute component={IndexPage} />
+    <Route path="*" component={NotFoundPage} />
   </Route>
 );
 
