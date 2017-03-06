@@ -4,6 +4,9 @@ const debug = process.env.NODE_ENV !== "production";
 
 const path = require('path');
 const webpack = require('webpack');
+import { WDS_PORT } from './src/shared/config'
+import { isProd } from './src/shared/util'
+
 
 var mainPath = path.resolve(__dirname, 'src', 'index.js');
 
@@ -12,14 +15,16 @@ const config = {
   entry: [
     // The script refreshing the browser on none hot updates
     'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    'react-hot-loader/patch',
     // Our application
     mainPath
   ],
   // Options affecting output of bundle
   output: {
-    path: path.resolve(__dirname, 'src', 'static', 'js')
+    path: path.resolve(__dirname, 'dist/js'),
     filename: 'bundle.js',
-    publicPath: '/js/'
+    publicPath: `0.0.0.0:${WDS_PORT}/dist/js/`,
   },
   // Options affecting normal modules
   module: {
@@ -40,6 +45,9 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
