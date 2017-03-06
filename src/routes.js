@@ -2,16 +2,13 @@
 
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
+import App from './components/containers/App';
+import Home from './components/containers/Home';
+import LoginPage from './components/containers/LoginPage';
 
-import Layout from './components/containers/Layout';
-import IndexPage from './components/containers/IndexPage';
-import NotFoundPage from './components/containers/NotFoundPage';
-
-const routes = (
-  <Route path="/" component={Layout}>
-    <IndexRoute component={IndexPage} />
-    <Route path="*" component={NotFoundPage} />
-  </Route>
+export default (
+	<Route path="/" component={App}>
+		<IndexRoute component={Home} />
+		<Route path="/login" component={LoginPage} />
+	</Route>
 );
-
-export default routes;

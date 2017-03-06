@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn dev:start",
-    "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
+    "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node server",
     "dev:wds": "webpack-dev-server --progress",
     "prod:build": "rimraf lib && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
     "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
@@ -28,6 +28,7 @@
     "react-redux": "^5.0.3",
     "react-router": "next",
     "react-router-dom": "next",
+    "react-search-input": "^0.10.4",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.1",
     "redux-thunk": "^2.2.0"
@@ -41,6 +42,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.23.0",
+    "babel-preset-react-hmre": "^1.1.1",
     "cross-env": "^3.2.3",
     "eslint": "^3.17.0",
     "eslint-config-airbnb": "^14.1.0",

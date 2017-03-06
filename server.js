@@ -1,25 +1,24 @@
 // @flow
 
-import compression from 'compression'
-import express from 'express'
+import compression from 'compression';
+import express from 'express';
 
-import { APP_NAME, STATIC_PATH, WEB_PORT } from 'src/shared/config'
-import { isProd } from 'src/shared/util'
-import renderApp from './render-app'
+import { APP_NAME, STATIC_PATH, WEB_PORT } from './src/shared/config';
+import { isProd } from './src/shared/util';
 
-const app = express()
+const app = express();
 
-app.use(compression())
-app.use(STATIC_PATH, express.static('dist'))
-app.use(STATIC_PATH, express.static('public'))
+app.use(compression());
+app.use(STATIC_PATH, express.static('dist'));
+app.use(STATIC_PATH, express.static('public'));
 
 app.get('/', (req, res) => {
   res.send(renderApp(APP_NAME))
-})
+});
 
 app.listen(WEB_PORT, () => {
   /* eslint-disable no-console */
   console.log(`Server running on port ${WEB_PORT} ${isProd ? '(production)' :
     '(development).\nKeep "yarn dev:wds" running in an other terminal'}.`)
   /* eslint-enable no-console */
-})
+});

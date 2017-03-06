@@ -5,13 +5,13 @@ import *  from '../actions/index';
 const initialState = {
   username: '',
   password: '',
-  token: '',
+  authToken: '',
   isLoggingIn: false,
   isLoggedIn: false,
   error: null
 };
 
-const authentication = (state = initialState, action) => {
+const authenticationReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_ATTEMPT:
       return {
@@ -26,7 +26,7 @@ const authentication = (state = initialState, action) => {
         ...state,
         isLoggingIn: false,
         isLoggedIn: true
-        token: action.token
+        authToken: action.authToken
       };
     case LOGIN_FAILURE:
       return {
@@ -40,11 +40,11 @@ const authentication = (state = initialState, action) => {
         isLoggedIn: false,
         username: '',
         password: '',
-        token: ''
+        authToken: ''
       };
     default:
       return state;
   }
 }
 
-export default authentication;
+export default authenticationReducer;

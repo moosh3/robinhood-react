@@ -5,7 +5,7 @@ import Router, { Link } from 'react-router';
 import { connect } from 'react-redux';
 import Header from '../Header';
 
-export default class App extends Component {
+export default class Home extends Component {
   render() {
     const {children} = this.props;
 
