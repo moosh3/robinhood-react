@@ -1,13 +1,17 @@
-import React from 'react'
-import { Route, IndexRoute } from 'react-router'
+// @flow
 
-import Layout from './components/Layout';
-import IndexPage from './components/IndexPage';
-import NotFoundPage from './components/NotFoundPage';
+import React from 'react';
+import { Route, IndexRoute } from 'react-router';
 
-export default const routes = (
-  <Route path="/" component={Layout}>
-    <IndexRoute component={IndexPage}/>
-    <Route path="*" component={NotFoundPage}/>
+import Layout from './components/containers/Layout';
+import IndexPage from './components/containers/IndexPage';
+import NotFoundPage from './components/containers/NotFoundPage';
+
+const routes = (
+  <Route path="/" component={ Layout }>
+    <IndexRoute component={ IndexPage }/>
+    <Route path="*" component={ NotFoundPage }/>
   </Route>
 );
+
+export default routes;

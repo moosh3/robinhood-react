@@ -1,6 +1,8 @@
-import React, {Component} from 'react';
-import Router, {Link} from 'react-router';
-import {connect} from 'react-redux';
+// @flow 
+
+import React, { Component } from 'react';
+import Router, { Link } from 'react-router';
+import { connect } from 'react-redux';
 import Header from './common/Header';
 import Banner from './common/Banner';
 import SideNav from './common/SideNav';
@@ -8,10 +10,6 @@ import Portfolio from './common/Portfolio';
 import Footer from './common/Footer';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {children} = this.props;
 
