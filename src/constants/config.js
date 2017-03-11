@@ -1,4 +1,3 @@
-// @flow
 
 export const WEB_PORT = process.env.PORT || 8002;
 export const STATIC_PATH = '/static';

@@ -40,6 +40,10 @@ const config = {
       }
     ]
   },
+  devServer: {
+    port: WDS_PORT,
+    hot: true,
+  },
   // Third party loaders and plugins
   plugins: debug ? [] : [
     new webpack.DefinePlugin({
@@ -47,17 +51,9 @@ const config = {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false },
-      mangle: true,
-      sourcemap: false,
-      beautify: false,
-      dead_code: true
-    }),
-  ]
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+  ],
 }
 
 module.exports = config;

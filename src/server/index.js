@@ -3,8 +3,9 @@
 import compression from 'compression';
 import express from 'express';
 
-import { APP_NAME, STATIC_PATH, WEB_PORT } from './src/shared/config';
-import { isProd } from './src/shared/util';
+import { APP_NAME, STATIC_PATH, WEB_PORT } from '../shared/config';
+import { isProd } from '../shared/util';
+import renderApp from './render-app';
 
 const app = express();
 
@@ -17,8 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(WEB_PORT, () => {
-  /* eslint-disable no-console */
+  // eslint-disable-next-line no-console
   console.log(`Server running on port ${WEB_PORT} ${isProd ? '(production)' :
     '(development).\nKeep "yarn dev:wds" running in an other terminal'}.`)
-  /* eslint-enable no-console */
 });

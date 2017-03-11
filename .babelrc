@@ -1,5 +1,5 @@
 {
-  "presets" : ["es2015", "react", "react-hmre"],
+  "presets" : ["es2015", "react", "react-hmre", "flow"],
   "env": {
     "development": {
       "presets": ["react-hmre"]
