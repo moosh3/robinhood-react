@@ -8,7 +8,21 @@ import { checkStatus } from '../shared/Utils';
 
 const COOKIE_PATH = 'authToken';
 
-export function login(credentials) {
+export function postLogin(credentials) {
+  return {type: POST_LOGIN, credentials};
+}
+
+export function loginSuccess() {
+  return {type: LOGIN_SUCCESS};
+}
+
+export function loginFailure(error) {
+  return {type: LOGIN_FAILURE};
+}
+
+// Helper functions
+
+function login(credentials) {
   let url = apiUrl + endpoints['login'];
   let form = new FormData(document.getElementById('login-form'));
   return dispatch => {
@@ -25,18 +39,6 @@ export function login(credentials) {
     .then(response => response.json())
     .then(json[0] => dispatch(loginSuccess(authToken)))
   };
-}
-
-function logout(_) {
-  return {
-    type: types.LOGOUT,
-    _
-  }
-}
-
-function loginSuccess(authToken) {
-  type: types.LOGIN_SUCCESS,
-  authToken
 }
 
 function authUser(authToken) {
@@ -120,45 +122,6 @@ function fetchAuthedUser(authToken) {
     .then(response => response.json())
     .then(return response.json());
   }
-}
-
-/* ////////////////////////////////
-//          Equity Data          //
-/////////////////////////////////*/
-
-function fetchShares(stock) {
-  return {
-    type: types.FETCH_SHARES,
-    stock
-  };
-}
-
-function fetchEquityValue(equity) {
-  return {
-    type: types.FETCH_EQUITY_VALUE,
-    equity
-  };
-}
-
-function fetchTotalReturn(equity) {
-  return {
-    type: types.FETCH_TOTAL_RETURN,
-    equity
-  }
-}
-
-function fetchTodaysReturn(equity) {
-  return {
-    type: types.FETCH_TODAYS_RETURN,
-    equity
-  }
-}
-
-function fetchAverageCost(equity) {
-  return {
-    type: types.FETCH_AVERAGE_COST,
-    equity
-  };
 }
 
 /* ////////////////////////////////

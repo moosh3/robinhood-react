@@ -26,6 +26,18 @@ import { constructUrl, checkStatus } from '../shared/Utils';
   }
 */
 
+export function getQuoteData(symbol) {
+  return {type: GET_QUOTE_DATA, symbol};
+}
+
+export function quoteDataSuccess(response) {
+  return {type: QUOTE_DATA_SUCCESS, response};
+}
+
+export function quoteDataFailure(error) {
+  return {type: QUOTE_DATA_FAILURE, error};
+}
+
 function fetchQuoteData(symbol) {
   //type: types.GET_QUOTE_DATA,
   return dispatch => {
@@ -39,7 +51,7 @@ function fetchQuoteData(symbol) {
   };
 }
 
-export function quoteData() {
+function quoteData() {
   return (dispatch, getState) => {
     type: types.GET_QUOTE,
     const { authed } = getState();
@@ -55,56 +67,6 @@ export function fetchNews(symbol) {
   return {
     type: types.NEWS,
     news
-  };
-}
-
-export function fetchAskPrice(symbol) {
-  return {
-    type: types.ASK_PRICE,
-    askPrice
-  };
-}
-export function fetchBidPrice(symbol) {
-  return {
-    type: types.BID_PRICE,
-    bidPrice
-  };
-}
-export function fetchBidSize(symbol) {
-  return {
-    type: types.BID_SIZE,
-    news
-  };
-}
-
-export function fetchLastTradePrice(symbol) {
-  return {
-    type: types.LAST_TRADE_PRICE,
-    lastTradePrice
-  };
-}
-export function fetchPreviousClose(symbol) {
-  return {
-    type: types.PREVIOUS_CLOSE,
-    previousClose
-  };
-}
-export function fetchPreviousCloseDate(symbol) {
-  return {
-    type: types.PREVIOUS_CLOSE_DATE,
-    previousCloseDate
-  };
-}
-export function fetchAdjustedPreviousClose(symbol) {
-  return {
-    type: types.ADJUSTED_PREVIOUS_CLOSE,
-    adjustedPreviousClose
-  };
-}
-export function fetchURL(symbol) {
-  return {
-    type: types.URL,
-    url
   };
 }
 
@@ -129,73 +91,3 @@ export function fetchURL(symbol) {
     "instrument": "https://api.robinhood.com/instruments/50810c35-d215-4866-9758-0ada4ac79ffa/"
   }
 */
-
-export function fetchOpenPrice(symbol) {
-  return {
-    type: types.OPEN_PRICE,
-    openPrice
-  };
-}
-
-export function fetchTodaysHigh(symbol) {
-  return {
-    type: types.TODAYS_HIGH,
-    todaysHigh
-  };
-}
-
-export function fetchTodaysLow(symbol) {
-  return {
-    type: types.TODAYS_LOW,
-    todaysLow
-  };
-}
-
-export function fetchYtdHigh(symbol) {
-  return {
-    type: types.YTD_HIGH,
-    ytdHigh
-  };
-}
-
-export function fetchYtdLow(symbol) {
-  return {
-    type: types.YTD_LOW,
-    ytdLow
-  };
-}
-
-export function fetchVolume(symbol) {
-  return {
-    type: types.VOLUME,
-    todaysVolume
-  };
-}
-
-export function fetchAverageVolume(symbol) {
-  return {
-    type: types.AVERAGE_VOLUME,
-    averageVolume
-  };
-}
-
-export function fetchMarketCap(symbol) {
-  return {
-    type: types.MARKET_CAP,
-    marketCap
-  };
-}
-
-export function fetchPERatio(symbol) {
-  return {
-    type: types.PE_RATION,
-    peRatio
-  };
-}
-
-export function fetchDivYield(symbol) {
-  return {
-    type: types.DIV_YIELD,
-    divYield
-  };
-}

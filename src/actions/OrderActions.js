@@ -46,44 +46,26 @@ import * as types from '../constants/ActionTypes';
     "quantity": "1.00000"
   }
 */
-export const placeOrder = order => {
-  return {
-    type: types.PLACE_ORDER,
-    order
-  };
+export function placeOrder(order) {
+  return {type: types.PLACE_ORDER, order};
 }
 
-export const placeBuyOrder = order => {
-  return {
-    type: types.PLACE_BUY_ORDER,
-    order
-  };
+export function placeBuyOrder(order) {
+  return {type: types.PLACE_BUY_ORDER, order};
 }
 
-export const placeSellOrder = order => {
-  return {
-    type: types.PLACE_SELL_ORDER,
-    order
-  };
+export function placeSellOrder(order) {
+  return {type: types.PLACE_SELL_ORDER, order};
 }
 
-export const gatherRecentOrders = authToken => {
-  return {
-    type: types.GATHER_RECENT_ORDERS,
-    authToken
-  };
+export function gatherRecentOrders(authToken) {
+  return {type: types.GATHER_RECENT_ORDERS, authToken};
 }
 
-export const gatherOrderInfo = (order_id, authToken) => {
-  return {
-    type. types.GATHER_ORDER_INFO,
-    order_id, authToken
-  }
+export function gatherOrderInfo(order_id, authToken) {
+  return {type: types.GATHER_ORDER_INFO, order_id, authToken};
 }
 
-export const cancelOrder = order => {
-  return {
-    type: types.CANCEL_ORDER,
-    order
-  };
+export function cancelOrder(order) {
+  return {type: types.CANCEL_ORDER, order};
 }

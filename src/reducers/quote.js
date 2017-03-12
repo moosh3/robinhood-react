@@ -1,5 +1,3 @@
-// @flow
-
 import * from '../actions/index';
 
 const quoteReducer = (state = '', action) => {
