@@ -1,0 +1,79 @@
+import { args, apiUrl, endpoints } from './shared/session';
+import * as types from '../constants/ActionTypes';
+
+/* ////////////////////////////////
+//        Watchlist Actions      //
+////////////////////////////////*/
+
+export function createWatchlist(name) {
+  /*
+    - *Needs authToken*
+    - URI api.robinhood.com/watchlists/
+    - Fields = [
+      - name
+    ]
+    - Sample response
+      {
+        "url": "https://api.robinhood.com/watchlists/Technology/",
+        "user": "https://api.robinhood.com/user/",
+        "name": "Technology"
+      }
+  */
+  return {
+    type: types.CREATE_WATCHLIST,
+    url
+  };
+}
+
+export function getWatchlists(watchlist) {
+  /*
+    - *Needs authToken*
+    - URI: api.robinhood.com/watchlists/
+    - Method: GET
+    -
+  */
+  return {
+    type: types.GET_WATCHLISTS,
+    watchlists
+  };
+}
+
+export function addInstrumentWatchlist(symbol, watchlist) {
+  /*
+  - *Needs authToken*
+  - URI: api.robinhood.com/watchlists/{watchlist}/bulk_add/
+  - Method: POST
+  - Fields = [
+    - symbols
+  ]
+  - Sample response
+    [{
+        "watchlist": "https://api.robinhood.com/watchlists/Default/",
+        "instrument": "https://api.robinhood.com/instruments/50810c35-d215-4866-9758-0ada4ac79ffa/",
+        "created_at": "2016-02-09T00:15:20.103927Z",
+        "url": "https://api.robinhood.com/watchlists/Default/50810c35-d215-4866-9758-0ada4ac79ffa/"
+    }, {
+        "watchlist": "https://api.robinhood.com/watchlists/Default/",
+        "instrument": "https://api.robinhood.com/instruments/6df56bd0-0bf2-44ab-8875-f94fd8526942/",
+        "created_at": "2016-02-09T00:15:20.103927Z",
+        "url": "https://api.robinhood.com/watchlists/Default/6df56bd0-0bf2-44ab-8875-f94fd8526942/"
+    }]
+  */
+  return {
+    type: types.ADD_INSTRUMENT_TO_WATCHLIST,
+    symbol, watchlist
+  };
+}
+
+export function deleteWatchlistInstrument(symbol, watchlist) {
+  /*
+  - *Needs authToken*
+  - URI: api.robinhood.com/watchlists/{watchlistName}/{instrumentId}/
+  - Method: DELETE
+  -
+  */
+  return {
+    type: types.DELETE_WATCHLIST_INSTRUMENT,
+    watchlist
+  };
+}
