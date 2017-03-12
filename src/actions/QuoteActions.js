@@ -1,6 +1,6 @@
-import { args, apiUrl, endpoints } from './shared/session';
+import { args, apiUrl, endpoints } from '../shared/session';
 import * as types from '../constants/ActionTypes';
-
+import { constructUrl } from '../shared/QuoteUtils';
 /* ////////////////////////////////
 //           GET Data          //
 /////////////////////////////////*/
@@ -25,11 +25,9 @@ import * as types from '../constants/ActionTypes';
 */
 
 function fetchQuoteData(symbol) {
-  type: types.GET_QUOTE_DATA,
-  let url = apiUrl + endpoints['quotes'] + symbol
+  //type: types.GET_QUOTE_DATA,
   return dispatch => {
-    dispatch(quoteAttempt(symbol))
-    return fetch(url, args)
+    fetch(constructUrl(symbol))
       .then(response => response.json())
       .then(json => dispatch(quoteSuccess(symbol)))
   };

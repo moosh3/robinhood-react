@@ -1,20 +1,22 @@
 import { createAction } from 'redux-actions';
 import { args, apiUrl, endpoints, rHeaders } from './shared/session';
 
-authHeaders = rHeaders.append("Authorization:", "Token ${authToken}");
-
 /* ////////////////////////////////
 //        Authentication        //
 /////////////////////////////////*/
 
-function login(credentials) {
+export function login(credentials) {
   let url = apiUrl + endpoints['login'];
   let form = new FormData(document.getElementById('login-form'));
   return dispatch => {
     dispatch(loginAttempt(credentials))
     return fetch(url, {
       method: 'POST',
-      body: form
+      headers: {
+        'Accept': 'application/json, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({'username': {username}, 'password': {password})
     })
     .then(response => response.json())
     .then(json[0] => dispatch(loginSuccess(authToken)))
@@ -26,6 +28,11 @@ function logout(_) {
     type: types.LOGOUT,
     _
   }
+}
+
+function loginSuccess(authToken) {
+  type: types.LOGIN_SUCCESS,
+  authToken
 }
 
 function authUser(authToken) {

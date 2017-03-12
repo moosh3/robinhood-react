@@ -1,4 +1,4 @@
-import { args, apiUrl, endpoints } from './shared/session';
+import { args, apiUrl, endpoints } from './shared/Session';
 import * as types from '../constants/ActionTypes';
 
 /* ////////////////////////////////
@@ -38,7 +38,7 @@ export function getWatchlists(watchlist) {
   };
 }
 
-export function addInstrumentWatchlist(symbol, watchlist) {
+export function addBulkInstrumentWatchlist(authToken, symbol, watchlist) {
   /*
   - *Needs authToken*
   - URI: api.robinhood.com/watchlists/{watchlist}/bulk_add/
@@ -62,6 +62,20 @@ export function addInstrumentWatchlist(symbol, watchlist) {
   return {
     type: types.ADD_INSTRUMENT_TO_WATCHLIST,
     symbol, watchlist
+
+    fetch(constructWatchlistAddUrl(watchlist), {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json, */*',
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${authToken}`,
+            },
+        body: JSON.stringify({'symbols': {symbols})
+        })
+      .then(res => res.json())
+      .then(res => console.log(res))
+      .catch(err => console.log('Fetch Error :-S', err))
+    })
   };
 }
 

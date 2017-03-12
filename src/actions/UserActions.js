@@ -1,9 +1,13 @@
-import { args, apiUrl, endpoints } from './shared/session';
+import { args, apiUrl, endpoints } from './shared/Session';
 import * as types from '../constants/ActionTypes';
+import { songSchema } from '../constants/Schemas';
+import { constructUserUrl } from '../shared/Utils'
 
 function fetchUserData(authToken) {
   return dispatch => {
-    dispatch(getWatchlists(authToken));
+    dispatch(fetchUserWatchlists(authToken));
+    dispatch(fetchUserPortfolio(authToken));
+    dispatch(fetchUserPositions(authToken));
     ...
   }
 }
@@ -17,18 +21,21 @@ export function fetchUserIfNeeded(authToken) {
     } else if (!(*default watchlist exists*)) { // TODO
       return dispatch(fetchUserData)
     }
-
     return null;
   };
 }
 
-function fetchUser(authToken) {
-  let url = apiUrl + 'user/id/'
-  return dispatch =>
-    fetch(url)
-      .then(response => response.json())
-      .then(json => {
-        const user = json[1];
+function fetchUserData(authToken) {
+  return dispatch => {
+    dispatch(requestUser(authToken);
+    return fetch(constructUserUrl(authToken))
+      .then(res => res.json())
+      .then(res => {
+        const normalized = normalize(res, userSchema);
+        dispatch(receiveUserPre(authToken, nomralized.entities))
       })
       .catch(err => { throw err; });
+    };
 }
+
+function
