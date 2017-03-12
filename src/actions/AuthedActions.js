@@ -6,6 +6,8 @@ import { checkStatus } from '../shared/Utils';
 //        Authentication        //
 /////////////////////////////////*/
 
+const COOKIE_PATH = 'authToken';
+
 export function login(credentials) {
   let url = apiUrl + endpoints['login'];
   let form = new FormData(document.getElementById('login-form'));
@@ -40,6 +42,53 @@ function loginSuccess(authToken) {
 function authUser(authToken) {
   return dispatch => {
     dispatch(fetchAuthedUser(authToken));
+  };
+}
+
+export function initAuth() {
+  return dispatch => {
+    const accessToken = Cookies.get(COOKIE_PATH);
+    if (accessToken) {
+      return dispatch(authUser(accessToken, false));
+    }
+    return null;
+  };
+}
+
+function initInterval(accessToken) {
+  return (dispatch, getState) => {
+    streamInterval = setInterval(() => {
+      const playlistKey = `stream${AUTHED_PLAYLIST_SUFFIX}`;
+      const { playlists } = getState();
+      const streamPlaylist = playlists[playlistKey];
+
+      if (streamPlaylist.futureUrl) {
+        dispatch(fetchNewStreamSongs(streamPlaylist.futureUrl, accessToken));
+      } else {
+        clearInterval(streamInterval);
+      }
+    }, 60000);
+  };
+}
+
+function receiveAccessToken(accessToken) {
+  return {
+    type: types.RECEIVE_ACCESS_TOKEN,
+    accessToken,
+  };
+}
+
+function receiveAuthedUserPre(accessToken, user, shouldShowStream) {
+  return dispatch => {
+    dispatch(receiveAccessToken(accessToken));
+    dispatch(receiveAuthedUser(user));
+    dispatch(fetchLikes(accessToken));
+    dispatch(fetchPlaylists(accessToken));
+    dispatch(fetchStream(accessToken));
+    dispatch(fetchFollowings(accessToken));
+    if (shouldShowStream) {
+      dispatch(navigateTo({ path: ['me', 'stream'] }));
+    }
   };
 }
 
