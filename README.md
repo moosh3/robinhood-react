@@ -34,8 +34,10 @@ User Actions
 - fetchUserData
 - fetchUserIfNeeded
 - fetchUser
+```
 
 Quote Actions
+```
 - fetchQuoteData
 - quoteData
 - fetchNews
@@ -59,3 +61,7 @@ Quote Actions
     - fetchPERatio
     - fetchDivYield
 ```
+
+Order Actions
+
+Watchlist Actions
