@@ -1,9 +1,8 @@
-// @flow
-
 import React, { PropTypes, Component } from 'react';
 import SearchInput, {createFilter} from 'react-search-input';
 
 export default class SearchBar extends Component {
+
   propTypes = {
     className: React.propTypes.string,
     inputClassName: React.PropTypes.string,

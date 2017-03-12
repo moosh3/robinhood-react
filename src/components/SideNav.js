@@ -1,9 +1,14 @@
-// @flow
-
 import React, { Component, PropTypes } from 'react';
 
+const propTypes = {
+
+}
+
 export default class Header extends Component {
+
   render() {
+    const {} = this.props;
+
     return (
       <div class="columns">
         <div class="column is-one-quarter">
@@ -44,6 +49,8 @@ export default class Header extends Component {
           </aside>
         </div>
       </div>
-    )
+    );
   }
 }
+
+SideNav.propTypes = propTypes;

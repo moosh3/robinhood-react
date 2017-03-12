@@ -1,9 +1,14 @@
-// @flow
-
 import React, { Component, PropTypes } from 'react';
 
+const propTypes = {
+
+}
+
 export default class Header extends Component {
+
   render() {
+    const {} = this.props;
+
     return (
       <nav class="nav has-shadow">
         <div class="container">
@@ -40,3 +45,5 @@ export default class Header extends Component {
     )
   }
 }
+
+Header.propTypes = propTypes;
