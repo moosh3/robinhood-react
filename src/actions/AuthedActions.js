@@ -1,5 +1,6 @@
-import { createAction } from 'redux-actions';
-import { args, apiUrl, endpoints, rHeaders } from './shared/session';
+import { apiUrl, endpoints } from '../constants/Robin';
+import * as types from '../constants/ActionTypes';
+import { checkStatus } from '../shared/Utils';
 
 /* ////////////////////////////////
 //        Authentication        //
@@ -18,6 +19,7 @@ export function login(credentials) {
       },
       body: JSON.stringify({'username': {username}, 'password': {password})
     })
+    .then(checkStatus)
     .then(response => response.json())
     .then(json[0] => dispatch(loginSuccess(authToken)))
   };
@@ -65,6 +67,7 @@ function fetchAuthedUser(authToken) {
       method: 'GET'
       headers = authHeaders
     })
+    .then(checkStatus)
     .then(response => response.json())
     .then(return response.json());
   }
@@ -131,5 +134,26 @@ function fetchMaintenance(equity) {
   return {
     type: types.FETCH_RG_MAINTENANCE,
     equity
+  };
+}
+
+/* ////////////////////////////////
+//        Portfolio Data         //
+/////////////////////////////////*/
+
+function fetchPortfolio(authToken) {
+  let url = apiUrl + endpoints[portfolio];
+  return dispatch => {
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json, */*',
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${authToken}`
+      },
+    })
+    .then(checkStatus)
+    .then(response => response.json())
+    .then(return response.json())
   };
 }

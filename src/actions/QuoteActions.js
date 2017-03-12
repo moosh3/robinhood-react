@@ -1,6 +1,8 @@
-import { args, apiUrl, endpoints } from '../shared/session';
+import { args, apiUrl, endpoints } from '../constants/Robin';
 import * as types from '../constants/ActionTypes';
-import { constructUrl } from '../shared/QuoteUtils';
+import { constructUrl, checkStatus } from '../shared/Utils';
+
+
 /* ////////////////////////////////
 //           GET Data          //
 /////////////////////////////////*/
@@ -28,8 +30,12 @@ function fetchQuoteData(symbol) {
   //type: types.GET_QUOTE_DATA,
   return dispatch => {
     fetch(constructUrl(symbol))
-      .then(response => response.json())
-      .then(json => dispatch(quoteSuccess(symbol)))
+      .then(checkStatus)
+      .then(res => res.json())
+      .then(res => {
+        const normalized = normalize(res, quoteData);
+        dispatch(receieveQuotePre(normalized.entities))
+      }
   };
 }
 
@@ -37,8 +43,9 @@ export function quoteData() {
   return (dispatch, getState) => {
     type: types.GET_QUOTE,
     const { authed } = getState();
-    dispatch(requestQuoteData(quotes));
+    dispatch(fetchQuoteData(quotes));
     return fetch(quote)
+      .then(checkStatus)
       .then(response => response.json())
       .then (json => )
   };

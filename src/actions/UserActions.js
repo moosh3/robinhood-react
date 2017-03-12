@@ -1,9 +1,11 @@
 import { args, apiUrl, endpoints } from './shared/Session';
 import * as types from '../constants/ActionTypes';
 import { songSchema } from '../constants/Schemas';
-import { constructUserUrl } from '../shared/Utils'
+import { constructUserUrl, checkStatus } from '../shared/Utils'
+import { fetchUserPortfolio, fetchUserPositions } from './AuthedActions';
+import { fetchUserWatchlists } from './WatchlistActions';
 
-function fetchUserData(authToken) {
+export function fetchUserData(authToken) {
   return dispatch => {
     dispatch(fetchUserWatchlists(authToken));
     dispatch(fetchUserPortfolio(authToken));
@@ -25,17 +27,6 @@ export function fetchUserIfNeeded(authToken) {
   };
 }
 
-function fetchUserData(authToken) {
-  return dispatch => {
-    dispatch(requestUser(authToken);
-    return fetch(constructUserUrl(authToken))
-      .then(res => res.json())
-      .then(res => {
-        const normalized = normalize(res, userSchema);
-        dispatch(receiveUserPre(authToken, nomralized.entities))
-      })
-      .catch(err => { throw err; });
-    };
+function fetchUser(authToken) {
+  
 }
-
-function

@@ -10,3 +10,13 @@ export function constructUrl(symbol) {
 export function constructWatchlistAddUrl(watchlist) {
   return `https://api.robinhood.com/watchlists/${watchlist}/bulk_add/`
 }
+
+export function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response
+  } else {
+    var error = new Error(response.statusText)
+    error.response = response
+    throw error
+  }
+}
