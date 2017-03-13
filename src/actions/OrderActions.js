@@ -46,6 +46,7 @@ import * as types from '../constants/ActionTypes';
     "quantity": "1.00000"
   }
 */
+
 export function placeOrder(order) {
   return {type: types.PLACE_ORDER, order};
 }

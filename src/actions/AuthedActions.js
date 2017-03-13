@@ -9,20 +9,20 @@ import { checkStatus } from '../shared/Utils';
 const COOKIE_PATH = 'authToken';
 
 export function postLogin(credentials) {
-  return {type: POST_LOGIN, credentials};
+  return {type: types.POST_LOGIN, credentials};
 }
 
-export function loginSuccess() {
-  return {type: LOGIN_SUCCESS};
+export function loginSuccess(authToken) {
+  return {type: types.LOGIN_SUCCESS};
 }
 
 export function loginFailure(error) {
-  return {type: LOGIN_FAILURE};
+  return {type: types.LOGIN_FAILURE};
 }
 
 // Helper functions
 
-function login(credentials) {
+function loginHelper(credentials) {
   let url = apiUrl + endpoints['login'];
   let form = new FormData(document.getElementById('login-form'));
   return dispatch => {
@@ -41,56 +41,23 @@ function login(credentials) {
   };
 }
 
-function authUser(authToken) {
-  return dispatch => {
-    dispatch(fetchAuthedUser(authToken));
-  };
+function logoutHelper(error) {
+  
 }
 
-export function initAuth() {
+function initAuth() {
   return dispatch => {
     const accessToken = Cookies.get(COOKIE_PATH);
     if (accessToken) {
-      return dispatch(authUser(accessToken, false));
+      return dispatch(authUser(accessToken));
     }
     return null;
   };
 }
 
-function initInterval(accessToken) {
-  return (dispatch, getState) => {
-    streamInterval = setInterval(() => {
-      const playlistKey = `stream${AUTHED_PLAYLIST_SUFFIX}`;
-      const { playlists } = getState();
-      const streamPlaylist = playlists[playlistKey];
-
-      if (streamPlaylist.futureUrl) {
-        dispatch(fetchNewStreamSongs(streamPlaylist.futureUrl, accessToken));
-      } else {
-        clearInterval(streamInterval);
-      }
-    }, 60000);
-  };
-}
-
-function receiveAccessToken(accessToken) {
-  return {
-    type: types.RECEIVE_ACCESS_TOKEN,
-    accessToken,
-  };
-}
-
-function receiveAuthedUserPre(accessToken, user, shouldShowStream) {
+function authUser(authToken) {
   return dispatch => {
-    dispatch(receiveAccessToken(accessToken));
-    dispatch(receiveAuthedUser(user));
-    dispatch(fetchLikes(accessToken));
-    dispatch(fetchPlaylists(accessToken));
-    dispatch(fetchStream(accessToken));
-    dispatch(fetchFollowings(accessToken));
-    if (shouldShowStream) {
-      dispatch(navigateTo({ path: ['me', 'stream'] }));
-    }
+    dispatch(fetchAuthedUser(authToken));
   };
 }
 

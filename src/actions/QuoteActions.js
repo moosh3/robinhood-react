@@ -38,7 +38,7 @@ export function quoteDataFailure(error) {
   return {type: QUOTE_DATA_FAILURE, error};
 }
 
-function fetchQuoteData(symbol) {
+function quoteDataHelper(symbol) {
   //type: types.GET_QUOTE_DATA,
   return dispatch => {
     fetch(constructUrl(symbol))
@@ -46,32 +46,13 @@ function fetchQuoteData(symbol) {
       .then(res => res.json())
       .then(res => {
         const normalized = normalize(res, quoteData);
-        dispatch(receieveQuotePre(normalized.entities))
+        dispatch(quoteDataSuccess(normalized.entities))
       }
   };
 }
 
-function quoteData() {
-  return (dispatch, getState) => {
-    type: types.GET_QUOTE,
-    const { authed } = getState();
-    dispatch(fetchQuoteData(quotes));
-    return fetch(quote)
-      .then(checkStatus)
-      .then(response => response.json())
-      .then (json => )
-  };
-}
-
-export function fetchNews(symbol) {
-  return {
-    type: types.NEWS,
-    news
-  };
-}
-
 /* ////////////////////////////////
-//        Quote statistics        //
+//        Quote fundamentals     //
 /////////////////////////////////*/
 /*
 - URI api.robinhood.com/fundamentals/{symbol}/
