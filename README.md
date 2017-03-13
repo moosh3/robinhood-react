@@ -39,23 +39,19 @@ webpack.config.js
 
 Authentication
 ```
-- Login
-- Logout
+- postLogin
 - loginSuccess
+- loginFailure
+- loginHelper
+- initAuth
 - authUser
 - fetchAuthedUser
-  - Equity Data
-    - fetchShares
-    - fetchEquityValue
-    - fetchTotalReturn
-    - fetchTodaysReturn
-    - fetchAverageCost
-  - Robinhood Gold
-    - fetchVolatility
-    - fetchInitialRequirements
-    - fetchMaintenance
-  - Portfolio Data
-    - fetchPortfolio
+- Robinhood Gold
+- fetchVolatility
+- fetchInitialRequirements
+- fetchMaintenance
+- Portfolio Data
+- fetchPortfolio
 ```
 
 User Actions
@@ -92,5 +88,21 @@ Quote Actions
 ```
 
 Order Actions
+```
+- placeOrder
+- placeBuyOrder
+- placeSellOrder
+- gatherRecentOrders
+- gatherOrderInfo
+- cancelOrder
+```
 
 Watchlist Actions
+```
+- createWatchlist
+- getWatchlists
+- addBulkInstrumentWatchlist
+- deleteWatchlistInstrument
+```
+
+### Reducers
