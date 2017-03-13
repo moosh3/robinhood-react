@@ -5,7 +5,7 @@ import * as types from '../constants/ActionTypes';
 //        Watchlist Actions      //
 ////////////////////////////////*/
 
-export function createWatchlist(name) {
+export function createWatchlist(authToken, name) {
   /*
     - *Needs authToken*
     - URI api.robinhood.com/watchlists/
@@ -21,11 +21,11 @@ export function createWatchlist(name) {
   */
   return {
     type: types.CREATE_WATCHLIST,
-    url
+    name
   };
 }
 
-export function getWatchlists(watchlist) {
+export function getWatchlists(authToken, watchlist) {
   /*
     - *Needs authToken*
     - URI: api.robinhood.com/watchlists/
@@ -60,9 +60,6 @@ export function addBulkInstrumentWatchlist(authToken, symbol, watchlist) {
     }]
   */
   return {
-    type: types.ADD_INSTRUMENT_TO_WATCHLIST,
-    symbol, watchlist
-
     fetch(constructWatchlistAddUrl(watchlist), {
         method: 'POST',
         headers: {

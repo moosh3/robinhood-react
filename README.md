@@ -74,17 +74,7 @@ Quote Actions
 - fetchPreviousCloseDate
 - fetchAdjustedPreviousClose
 - fetchURL
-  - Quote statistics (?)
-    - fetchOpenPrice
-    - fetchTodaysHigh
-    - fetchTodaysLow
-    - fetchYtdHigh
-    - fetchYtdLow
-    - fetchVolume
-    - fetchAverageVolume
-    - fetchMarketCap
-    - fetchPERatio
-    - fetchDivYield
+- Quote statistics (?)
 ```
 
 Order Actions

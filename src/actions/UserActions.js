@@ -10,7 +10,6 @@ export function fetchUserData(authToken) {
     dispatch(fetchUserWatchlists(authToken));
     dispatch(fetchUserPortfolio(authToken));
     dispatch(fetchUserPositions(authToken));
-    ...
   }
 }
 
@@ -28,5 +27,5 @@ export function fetchUserIfNeeded(authToken) {
 }
 
 function fetchUser(authToken) {
-  
+
 }

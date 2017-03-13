@@ -9,7 +9,7 @@ class AccountContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const { path } = navigator.route
+  const { path } = navigator.route;
   return {
 
   };

@@ -6,7 +6,7 @@ export const POST_LOGIN = 'POST_LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const POST_LOGOUT = 'POST_LOGOUT'
+export const POST_LOGOUT = 'POST_LOGOUT';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
@@ -43,7 +43,7 @@ export const QUOTE_DATA_FAILURE = 'QUOTE_DATA_FAILURE';
 
 export const GET_NEWS = 'GET_NEWS';
 export const NEWS_SUCCESS = 'NEWS_SUCCESS';
-export const NEWS_FAILURE = 'NEWS_FAILURE'
+export const NEWS_FAILURE = 'NEWS_FAILURE';
 
 /* ////////////////////////////////
 //        Placing Order         //

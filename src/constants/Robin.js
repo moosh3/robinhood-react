@@ -31,5 +31,5 @@ export const endpoints = {
   fundamentals: 'fundamentals/',
   sp500_up: 'midlands/movers/sp500/?direction=up',
   sp500_down: 'midlands/movers/sp500/?direction=down',
-  news: 'midlands/news/'
+  news: 'midlands/news/',
 };

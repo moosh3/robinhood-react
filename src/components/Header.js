@@ -14,7 +14,7 @@ export default class Header extends Component {
         <div class="container">
           <div class="nav-left">
             <a class="nav-item">
-              <img src="logo.png" alt="Bulma logo">
+              <img src="logo.png" alt="Bulma logo"></img>
             </a>
             <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
             <a class="nav-item is-tab is-hidden-mobile">Watchlist</a>

@@ -1,21 +1,20 @@
 /* eslint-disable import/prefer-default-export */
-import { apiUrl, endpoints } from '../constants/Robin';
 
 export const isProd = process.env.NODE_ENV === 'production';
 
 export function constructUrl(symbol) {
-  return `https://api.robinhood.com/quotes/${symbol}/`
+  return `https://api.robinhood.com/quotes/${symbol}/`;
 }
 
 export function constructWatchlistAddUrl(watchlist) {
-  return `https://api.robinhood.com/watchlists/${watchlist}/bulk_add/`
+  return `https://api.robinhood.com/watchlists/${watchlist}/bulk_add/`;
 }
 
 export function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response
+    return response;
   } else {
-    var error = new Error(response.statusText)
+    var error = new Error(response.statusText);
     error.response = response
     throw error
   }

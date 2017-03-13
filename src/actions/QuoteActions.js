@@ -48,7 +48,7 @@ function quoteDataHelper(symbol) {
         const normalized = normalize(res, quoteData);
         dispatch(quoteDataSuccess(normalized.entities))
       }
-  };
+  },
 }
 
 /* ////////////////////////////////

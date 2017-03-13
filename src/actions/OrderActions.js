@@ -1,4 +1,3 @@
-import { args, apiUrl, endpoints } from './shared/session';
 import * as types from '../constants/ActionTypes';
 
 /* ////////////////////////////////
@@ -48,25 +47,25 @@ import * as types from '../constants/ActionTypes';
 */
 
 export function placeOrder(order) {
-  return {type: types.PLACE_ORDER, order};
+  return { type: types.PLACE_ORDER, order };
 }
 
 export function placeBuyOrder(order) {
-  return {type: types.PLACE_BUY_ORDER, order};
+  return { type: types.PLACE_BUY_ORDER, order };
 }
 
 export function placeSellOrder(order) {
-  return {type: types.PLACE_SELL_ORDER, order};
+  return { type: types.PLACE_SELL_ORDER, order };
 }
 
 export function gatherRecentOrders(authToken) {
-  return {type: types.GATHER_RECENT_ORDERS, authToken};
+  return { type: types.GATHER_RECENT_ORDERS, authToken };
 }
 
-export function gatherOrderInfo(order_id, authToken) {
-  return {type: types.GATHER_ORDER_INFO, order_id, authToken};
+export function gatherOrderInfo(orderId, authToken) {
+  return { type: types.GATHER_ORDER_INFO, orderId, authToken };
 }
 
 export function cancelOrder(order) {
-  return {type: types.CANCEL_ORDER, order};
+  return { type: types.CANCEL_ORDER, order };
 }
