@@ -1,4 +1,4 @@
-import *  from '../actions/index';
+import * from '../constants/ActionTypes';
 
 const initialState = {
   username: '',
