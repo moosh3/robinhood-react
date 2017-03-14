@@ -26,6 +26,29 @@ import { constructUrl, checkStatus } from '../shared/Utils';
   }
 */
 
+function fetchQuoteData(symbol) {
+  return (dispatch, getState) => {
+    dispatch(getQuoteData(symbol));
+
+    return fetch(constructUserUrl(symbol))
+      .then(response => response.json())
+      .then(json => {
+        dispatch(quoteDataSuccess(response));
+      })
+      .catch(error => {
+        dispatch(quoteDataFailure(error))
+      })
+  };
+}
+
+export function fetchQuoteDataIfNeeded(symbol) {
+  return (dispatch, getState) => {
+    const { entities } = getState(); // entities == normalized quote data
+    if //
+  }
+}
+
+
 export function getQuoteData(symbol) {
   return {type: GET_QUOTE_DATA, symbol};
 }
@@ -36,19 +59,6 @@ export function quoteDataSuccess(response) {
 
 export function quoteDataFailure(error) {
   return {type: QUOTE_DATA_FAILURE, error};
-}
-
-function quoteDataHelper(symbol) {
-  //type: types.GET_QUOTE_DATA,
-  return dispatch => {
-    fetch(constructUrl(symbol))
-      .then(checkStatus)
-      .then(res => res.json())
-      .then(res => {
-        const normalized = normalize(res, quoteData);
-        dispatch(quoteDataSuccess(normalized.entities))
-      }
-  },
 }
 
 /* ////////////////////////////////

@@ -8,21 +8,8 @@ import { checkStatus } from '../shared/Utils';
 
 const COOKIE_PATH = 'authToken';
 
-export function postLogin(credentials) {
-  return {type: types.POST_LOGIN, credentials};
-}
 
-export function loginSuccess(authToken) {
-  return {type: types.LOGIN_SUCCESS};
-}
-
-export function loginFailure(error) {
-  return {type: types.LOGIN_FAILURE};
-}
-
-// Helper functions
-
-function loginHelper(credentials) {
+function loginUser(credentials) {
   let url = apiUrl + endpoints['login'];
   let form = new FormData(document.getElementById('login-form'));
   return dispatch => {
@@ -41,7 +28,7 @@ function loginHelper(credentials) {
   };
 }
 
-function logoutHelper(error) {
+function logoutUser() {
 
 }
 
@@ -91,6 +78,23 @@ function fetchAuthedUser(authToken) {
   }
 }
 
+function fetchPortfolio(authToken) {
+  let url = apiUrl + endpoints[portfolio];
+  return dispatch => {
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json, */*',
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${authToken}`
+      },
+    })
+    .then(checkStatus)
+    .then(response => response.json())
+    .then(return response.json())
+  };
+}
+
 /* ////////////////////////////////
 //        Robinhood Gold         //
 /////////////////////////////////*/
@@ -116,23 +120,14 @@ function fetchMaintenance(equity) {
   };
 }
 
-/* ////////////////////////////////
-//        Portfolio Data         //
-/////////////////////////////////*/
+export function postLogin(credentials) {
+  return {type: types.POST_LOGIN, credentials};
+}
 
-function fetchPortfolio(authToken) {
-  let url = apiUrl + endpoints[portfolio];
-  return dispatch => {
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json, */*',
-        'Content-Type': 'application/json',
-        'Authorization': `Token ${authToken}`
-      },
-    })
-    .then(checkStatus)
-    .then(response => response.json())
-    .then(return response.json())
-  };
+export function loginSuccess(authToken) {
+  return {type: types.LOGIN_SUCCESS};
+}
+
+export function loginFailure(error) {
+  return {type: types.LOGIN_FAILURE};
 }

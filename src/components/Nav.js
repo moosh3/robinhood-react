@@ -1,10 +1,31 @@
 import React, { Component, PropTypes } from 'react';
+import { loginUser, logoutUser } from '../actions/AuthedActions';
 
 const propTypes = {
-
+  authed: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
 
 export default class Header extends Component {
+
+  constructor(props) {
+    super(props);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+
+  login(e) {
+    e.preventDefault();
+    const { dispatch } = this.props;
+    dispatch(loginUser());
+  }
+
+  logout(e) {
+    e.preventDefault();
+    const { dispatch } = this.props;
+    dispatch(logoutUser());
+  }
+
 
   render() {
     const {} = this.props;
