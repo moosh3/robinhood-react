@@ -1,7 +1,6 @@
 import { args, apiUrl, endpoints } from '../constants/Robin';
 import * as types from '../constants/ActionTypes';
-import { constructUrl, checkStatus } from '../shared/Utils';
-
+import { constructQuoteUrl, checkStatus } from '../shared/Utils';
 
 /* ////////////////////////////////
 //           Quote Data          //
@@ -31,20 +30,20 @@ export function requestQuoteData(symbol) {
 }
 
 export function recieveQuoteData(response) {
-  return {type: types.RECIEVE_QUOTE, quote: response.data};
+  return {type: types.RECIEVE_QUOTE, response};
 }
 
 function fetchQuoteData(symbol) {
   return dispatch => {
     dispatch(getQuoteData(symbol));
 
-    return fetch(constructUserUrl(symbol))
+    return fetch(constructQuoteUrl(symbol))
       .then(response => response.json())
       .then(json => {
         dispatch(recieveQuoteData(json));
       })
       //.catch(error => {
-      //  dispatch(quoteDataFailure(error)) TODO
+      //  dispatch(quoteDataFailure(error)) //TODO
       })
   };
 }

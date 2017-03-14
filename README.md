@@ -89,57 +89,7 @@ webpack.config.js
 
 ```store/``` allows for the definition of a custom redux store to insert middleware, in this instance ```thunk```.
 
-### Actions
-
-AuthedActions
-
-```
-- authUser          returns dispatch for fetchAuthedUser
-- loginUser         takes form data and returns json authToken
-- loginSuccessPre   returns dispatch for all fetched data
-- postLogin
-- loginSuccess
-- loginFailure
-- logoutUser        removes authToken cookie and dispatch's resetAuth
-- resetAuthed       uses cookie to end session
-- initAuth          if authToken, dispatch authUser
-- fetchAuthedUser   dispatch user data
-- fetchPortfolio    dispatch portfolio data
-Watchlists
-- fetchWatchlists                   dispatch watchlist data
-- addBulkInstrumentWatchlist        add ticker(s) to a watchlist
-- deleteWatchlistInstrument         delete a ticker from watchlist
-- createWatchlist                   create a new watchlist
-Robinhood Gold
-- fetchVolatility
-- fetchInitialRequirements
-- fetchMaintenance
-```
-
-Quote Actions
-```
-- requestQuoteData
-- recieveQuoteData            returns type, json data
-- fetchQuoteData              dispatch fetch for getQuoteData, quoteDataSuccess, recieveQuoteData, and quoteDataFailure on err
-- shouldFetchQuote            checks whether to dispatch fetchQuoteData
-- fetchQuoteDataIfNeeded      dispatch fetchQuoteData
-- getQuoteData                returns type
-- quoteDataSuccess            returns type
-- quoteDataFailure            returns type
-- #TODO - Quote fundamental data!
-```
-
-Order Actions
-```
-- placeOrder
-- placeBuyOrder
-- placeSellOrder
-- gatherRecentOrders
-- gatherOrderInfo
-- cancelOrder
-```
-
-Flow
+### Flow
 
 ```
 - Dashboard

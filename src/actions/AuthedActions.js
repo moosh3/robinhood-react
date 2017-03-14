@@ -8,6 +8,26 @@ import { fetchAccountID, fetchAccountInfo } from './AccountActions';
 /* ////////////////////////////////
 //        Authentication        //
 /////////////////////////////////*/
+/*
+fetchAuthedUser
+- *Needs authToken*
+- URI: https://api.robinhood.com/user/
+- Sample response:
+  {
+    "username": "superman",
+    "first_name": "Clark",
+    "last_name": "Kent",
+    "id_info": "https://api.robinhood.com/user/id/",
+    "url": "https://api.robinhood.com/user/",
+    "basic_info": "https://api.robinhood.com/user/basic_info/",
+    "email": "s@itmeanshope.com",
+    "investment_profile": "https://api.robinhood.com/user/investment_profile/",
+    "id": "11deface-face-face-face-defacedeface11",
+    "international_info": "https://api.robinhood.com/user/international_info/",
+    "employment": "https://api.robinhood.com/user/employment/",
+    "additional_info": "https://api.robinhood.com/user/additional_info/"
+  }
+*/
 
 const COOKIE_PATH = 'authToken';
 
@@ -72,35 +92,17 @@ function initAuth() {
 }
 
 function fetchAuthedUser(authToken) {
-/*
-  - *Needs authToken*
-  - URI: https://api.robinhood.com/user/
-  - Sample response:
-    {
-      "username": "superman",
-      "first_name": "Clark",
-      "last_name": "Kent",
-      "id_info": "https://api.robinhood.com/user/id/",
-      "url": "https://api.robinhood.com/user/",
-      "basic_info": "https://api.robinhood.com/user/basic_info/",
-      "email": "s@itmeanshope.com",
-      "investment_profile": "https://api.robinhood.com/user/investment_profile/",
-      "id": "11deface-face-face-face-defacedeface11",
-      "international_info": "https://api.robinhood.com/user/international_info/",
-      "employment": "https://api.robinhood.com/user/employment/",
-      "additional_info": "https://api.robinhood.com/user/additional_info/"
-    }
-*/
-
-  let url = apiUrl + endpoints[accounts]// User data
+  var url = apiUrl + endpoints[accounts]// User data
   return dispatch => {
-    return fetch(url, {
+    fetch(url, {
       method: 'GET'
-      headers = authHeaders
-    })
+      headers: {
+          'Accept': 'application/json, */*',
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${authToken}`,
+      })
     .then(checkStatus)
     .then(response => response.json())
-    .then(return response.json());
   }
 }
 

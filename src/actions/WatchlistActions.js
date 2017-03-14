@@ -11,15 +11,15 @@ import { checkStatus } from '../shared/Utils';
   - Method: GET
   - Sample Response:
     {
-        "next": null,
-        "previous": null,
-        "results": [
-            {
-                "name": "Default",
-                "url": "https://api.robinhood.com/watchlists/Default/",
-                "user": "https://api.robinhood.com/user/"
-            }
-        ]
+      "next": null,
+      "previous": null,
+      "results": [
+          {
+            "name": "Default",
+            "url": "https://api.robinhood.com/watchlists/Default/",
+            "user": "https://api.robinhood.com/user/"
+          }
+      ]
     }
 
 createWatchlist
@@ -60,6 +60,8 @@ deleteWatchlistInstrument
   - *Needs authToken*
   - URI: api.robinhood.com/watchlists/{watchlistName}/{instrumentId}/
   - Method: DELETE
+  - Sample Response:
+  
 */
 
 export function requestWatchlists(authToken) {
@@ -124,7 +126,7 @@ export function addBulkInstrumentWatchlist(authToken, symbols, watchlist) {
         body: JSON.stringify({'symbols': {symbols})
         })
       .then(res => res.json())
-      .then(res => console.log(res))
+      .then(dispatch //TODO
       .catch(err => console.log('Fetch Error :-S', err))
     })
   };
