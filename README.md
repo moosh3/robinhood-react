@@ -81,35 +81,35 @@ webpack.config.js
 
 ```actions/``` contain all action creators. These are triggered by events and return an action object (or function, using thunk middleware) that will notify reducers there needs to be a change in the state
 
-```components``` contains dumb components
+```components/``` contains dumb components
 
-```containers``` contains react components that serve as containers for multiple dumb components. This will connect React components to the Redux store. The ```connect``` method will map the state to props by subscribing to a store that has been passed through the components context and will tell the component to update whenever the state changes. ```connect``` can also map dispatch to props by connecting action creators to and to the store dispatch method allowing the props to be invoked directly (rather than ```store.dispatch({type: 'MY_ACTION', id: 1})```).
+```containers/``` contains react components that serve as containers for multiple dumb components. This will connect React components to the Redux store. The ```connect``` method will map the state to props by subscribing to a store that has been passed through the components context and will tell the component to update whenever the state changes. ```connect``` can also map dispatch to props by connecting action creators to and to the store dispatch method allowing the props to be invoked directly (rather than ```store.dispatch({type: 'MY_ACTION', id: 1})```).
 
-```reducers``` hold functions that take the current state and an action type and return a new state with the changes
+```reducers/``` hold functions that take the current state and an action type and return a new state with the changes
 
-```store``` allows for the definition of a custom redux store to insert middleware, in this instance ```thunk```.
+```store/``` allows for the definition of a custom redux store to insert middleware, in this instance ```thunk```.
 
 ### Actions
 
 AuthedActions
 
 ```
-- authUser => returns dispatch for fetchAuthedUser
-- loginUser => takes form data and returns json authToken
-- loginSuccessPre => returns dispatch for all fetched data
+- authUser          returns dispatch for fetchAuthedUser
+- loginUser         takes form data and returns json authToken
+- loginSuccessPre   returns dispatch for all fetched data
 - postLogin
 - loginSuccess
 - loginFailure
-- logoutUser => removes authToken cookie and dispatch's resetAuth
-- resetAuthed => uses cookie to end session
-- initAuth => if authToken, dispatch authUser
-- fetchAuthedUser => dispatch user data
-- fetchPortfolio => dispatch portfolio data
+- logoutUser        removes authToken cookie and dispatch's resetAuth
+- resetAuthed       uses cookie to end session
+- initAuth          if authToken, dispatch authUser
+- fetchAuthedUser   dispatch user data
+- fetchPortfolio    dispatch portfolio data
 Watchlists
-- fetchWatchlists => dispatch watchlist data
-- addBulkInstrumentWatchlist => add ticker(s) to a watchlist
-- deleteWatchlistInstrument => delete a ticker from watchlist
-- createWatchlist => create a new watchlist
+- fetchWatchlists                   dispatch watchlist data
+- addBulkInstrumentWatchlist        add ticker(s) to a watchlist
+- deleteWatchlistInstrument         delete a ticker from watchlist
+- createWatchlist                   create a new watchlist
 Robinhood Gold
 - fetchVolatility
 - fetchInitialRequirements
@@ -119,13 +119,13 @@ Robinhood Gold
 Quote Actions
 ```
 - requestQuoteData
-- recieveQuoteData => returns type, json data
-- fetchQuoteData => dispatch fetch for getQuoteData, quoteDataSuccess, recieveQuoteData, and quoteDataFailure on err
-- shouldFetchQuote => checks whether to dispatch fetchQuoteData
-- fetchQuoteDataIfNeeded => dispatch fetchQuoteData
-- getQuoteData => returns type
-- quoteDataSuccess => returns type
-- quoteDataFailure => returns type
+- recieveQuoteData            returns type, json data
+- fetchQuoteData              dispatch fetch for getQuoteData, quoteDataSuccess, recieveQuoteData, and quoteDataFailure on err
+- shouldFetchQuote            checks whether to dispatch fetchQuoteData
+- fetchQuoteDataIfNeeded      dispatch fetchQuoteData
+- getQuoteData                returns type
+- quoteDataSuccess            returns type
+- quoteDataFailure            returns type
 - #TODO - Quote fundamental data!
 ```
 
