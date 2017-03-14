@@ -10,7 +10,7 @@ const propTypes = {
   title: PropTypes.string,
 };
 
-export default class Link extends Component {
+class Link extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -39,3 +39,5 @@ export default class Link extends Component {
 }
 
 Link.propTypes = propTypes;
+
+export default Link;

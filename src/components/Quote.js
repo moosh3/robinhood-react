@@ -6,7 +6,7 @@ const PropTypes = {
   ...,
 }
 
-export default class Quote extends Component {
+class Quote extends Component {
 
   componentWillMount() {
     const { dispatch, symbol } = this.props;
@@ -23,3 +23,5 @@ export default class Quote extends Component {
 }
 
 Quote.PropTypes = PropTypes;
+
+export default Quote;

@@ -13,9 +13,7 @@
     "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
     "prod:stop": "pm2 delete all",
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
-    "test": "eslint src && flow && jest --coverage",
-    "precommit": "yarn test",
-    "prepush": "yarn test && yarn prod:build"
+    "test": "eslint src && flow && jest --coverage", 
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",

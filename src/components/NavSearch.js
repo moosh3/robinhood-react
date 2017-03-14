@@ -1,15 +1,14 @@
 import React, { PropTypes, Component } from 'react';
 import SearchInput, {createFilter} from 'react-search-input';
 
-export default class SearchBar extends Component {
+const propTypes = {
+  className: React.propTypes.string,
+  inputClassName: React.PropTypes.string,
+  onChange: React.PropTypes.func,
+  value: React.PropTypes.string
+}
 
-  propTypes = {
-    className: React.propTypes.string,
-    inputClassName: React.PropTypes.string,
-    onChange: React.PropTypes.func,
-    value: React.PropTypes.string
-  }
-
+class SearchBar extends Component {
   getInitialState () {
     return {
       searchTerm: this.props.value || ''
@@ -47,3 +46,7 @@ export default class SearchBar extends Component {
     });
   }
 }
+
+SearchBar.propTypes = propTypes;
+
+export default SearchBar;

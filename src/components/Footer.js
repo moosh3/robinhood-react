@@ -5,7 +5,7 @@ const propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default class Header extends Component {
+class Footer extends Component {
   render() {
     const {} = this.props;
 
@@ -30,4 +30,6 @@ export default class Header extends Component {
   }
 }
 
-Header.propTypes = propTypes;
+Footer.propTypes = propTypes;
+
+export default Footer;

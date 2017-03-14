@@ -1,9 +1,7 @@
-// @flow
-
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import TextInput from './common/TextInput';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import * as sessionActions from '../actions/sessionActions';
 
 class LoginPage extends React.Component {
@@ -23,7 +21,7 @@ class LoginPage extends React.Component {
 
   onSave(event) {
     event.preventDefault();
-    this.props.actions.logInUser(this.state.credentials);
+    this.props.actions.loginUser(this.state.credentials);
   }
 
   render() {

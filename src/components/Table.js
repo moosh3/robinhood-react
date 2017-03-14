@@ -5,7 +5,7 @@ const propTypes = {
   dispatch: PropTypes.func.isRequired,
 }
 
-export default class Table extends Component {
+class Table extends Component {
 
   render() {
     const {} = this.props;
@@ -17,3 +17,5 @@ export default class Table extends Component {
 }
 
 Table.propTypes = propTypes;
+
+export default Table;
