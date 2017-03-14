@@ -1,7 +1,7 @@
 import * from '../constants/ActionTypes';
 
 const initialState = {
-
+  isLoggedIn: true,
 }
 
 const userReducer = (state = initialState, action) => {

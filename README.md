@@ -2,6 +2,25 @@
 
 This packages uses [Robinhoods API](https://github.com/sanko/Robinhood) allowing you to use Robinhood in your browser. Limited to (well designed!) mobile apps no more!
 
+## Requirements
+* node `^7.0.0`
+* yarn `^0.20.3`
+
+## Getting Started
+
+First, clone the project:
+
+```bash
+$ git clone https://github.com/aleccunningham/robinhood-react robinhood
+$ cd robinhood
+```
+Then install dependencies and check to see it works. It is recommended that you use [Yarn](https://yarnpkg.com/) for deterministic installs, but `npm install` will work just as well.
+
+```bash
+$ yarn install    # Install project dependencies
+$ yarn start      # Compile and launch (same as `npm start`)
+```
+
 ### Reference
 
 Below is a quick reference to the code base, mainly to give structure to the flow of the actions -> reducers -> store
@@ -66,14 +85,6 @@ Quote Actions
 - fetchQuoteData
 - quoteData
 - fetchNews
-- fetchAskPrice
-- fetchBidPrice
-- fetchBidSize
-- fetchLastTradePrice
-- fetchPreviousClose
-- fetchPreviousCloseDate
-- fetchAdjustedPreviousClose
-- fetchURL
 - Quote statistics (?)
 ```
 

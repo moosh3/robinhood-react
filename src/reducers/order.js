@@ -1,20 +1,7 @@
 import * from '../constants/ActionTypes';
 
 const initialState = {
-  isLoggedIn: false,
-  order: {
-    account: '',
-    instrument: '',
-    symbol: '',
-    type: '',
-    time_in_force: '',
-    trigger: '',
-    price: '',
-    stop_price: '',
-    quantity: '',
-    side: '',
-    client_id: '',
-  },
+  isLoggedIn: true,
 }
 
 const orderReducer = (state = initialState, action) => {
