@@ -13,7 +13,8 @@
     "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
     "prod:stop": "pm2 delete all",
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
-    "test": "eslint src && flow && jest --coverage", 
+    "test": "eslint src && flow && jest --coverage",
+    "compile": "babel"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
@@ -33,7 +34,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.23.0",
+    "babel-cli": "^6.24.0",
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^19.0.0",

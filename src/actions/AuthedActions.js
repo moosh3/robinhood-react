@@ -1,6 +1,9 @@
 import { apiUrl, endpoints } from '../constants/Robin';
 import * as types from '../constants/ActionTypes';
 import { checkStatus } from '../shared/Utils';
+import { fetchWatchlists } from './WatchlistActions';
+import { fetchPortfolio, fetchPositions } from './PortfolioActions';
+import { fetchAccountID, fetchAccountInfo } from './AccountActions';
 
 /* ////////////////////////////////
 //        Authentication        //
@@ -35,6 +38,8 @@ function loginUser(credentials) {
 function loginSuccessPre(authToken) {
   return dispatch => {
     dispatch(fetchAuthedUser(authToken));
+    dispatch(fetchAccountInfo(authToken));
+    dispatch(fetchAccountID(authToken));
     dispatch(fetchWatchlists(authToken));
     dispatch(fetchPortfolio(authToken));
     dispatch(fetchPositions(authToken));
@@ -67,8 +72,10 @@ function initAuth() {
 }
 
 function fetchAuthedUser(authToken) {
-  /*
-  Sample response:
+/*
+  - *Needs authToken*
+  - URI: https://api.robinhood.com/user/
+  - Sample response:
     {
       "username": "superman",
       "first_name": "Clark",
@@ -83,7 +90,8 @@ function fetchAuthedUser(authToken) {
       "employment": "https://api.robinhood.com/user/employment/",
       "additional_info": "https://api.robinhood.com/user/additional_info/"
     }
-  */
+*/
+
   let url = apiUrl + endpoints[accounts]// User data
   return dispatch => {
     return fetch(url, {
@@ -96,111 +104,14 @@ function fetchAuthedUser(authToken) {
   }
 }
 
-function fetchPortfolio(authToken) {
-  let url = apiUrl + endpoints[portfolio];
-  return dispatch => {
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json, */*',
-        'Content-Type': 'application/json',
-        'Authorization': `Token ${authToken}`
-      },
-    })
-    .then(checkStatus)
-    .then(response => response.json())
-    .then(dispatch(recievePortfolio()))
-    .then(return response.json())
-  };
-}
+export function postLogin(credentials) {
+  return {type: types.POST_LOGIN, credentials};}
 
-/* ////////////////////////////////
-//        Watchlist Actions      //
-////////////////////////////////*/
+export function loginSuccess(authToken) {
+  return {type: types.LOGIN_SUCCESS, authToken};}
 
-export function createWatchlist(authToken, name) {
-  /*
-    - *Needs authToken*
-    - URI api.robinhood.com/watchlists/
-    - Fields = [
-      - name
-    ]
-    - Sample response
-      {
-        "url": "https://api.robinhood.com/watchlists/Technology/",
-        "user": "https://api.robinhood.com/user/",
-        "name": "Technology"
-      }
-  */
-  return {
-    type: types.CREATE_WATCHLIST,
-    name
-  };
-}
-
-export function fetchWatchlists(authToken, watchlist) {
-  /*
-    - *Needs authToken*
-    - URI: api.robinhood.com/watchlists/
-    - Method: GET
-    -
-  */
-  return {
-    type: types.GET_WATCHLISTS,
-    watchlists
-  };
-}
-
-export function addBulkInstrumentWatchlist(authToken, symbol, watchlist) {
-  /*
-  - *Needs authToken*
-  - URI: api.robinhood.com/watchlists/{watchlist}/bulk_add/
-  - Method: POST
-  - Fields = [
-    - symbols
-  ]
-  - Sample response
-    [{
-        "watchlist": "https://api.robinhood.com/watchlists/Default/",
-        "instrument": "https://api.robinhood.com/instruments/50810c35-d215-4866-9758-0ada4ac79ffa/",
-        "created_at": "2016-02-09T00:15:20.103927Z",
-        "url": "https://api.robinhood.com/watchlists/Default/50810c35-d215-4866-9758-0ada4ac79ffa/"
-    }, {
-        "watchlist": "https://api.robinhood.com/watchlists/Default/",
-        "instrument": "https://api.robinhood.com/instruments/6df56bd0-0bf2-44ab-8875-f94fd8526942/",
-        "created_at": "2016-02-09T00:15:20.103927Z",
-        "url": "https://api.robinhood.com/watchlists/Default/6df56bd0-0bf2-44ab-8875-f94fd8526942/"
-    }]
-  */
-  return {
-    fetch(constructWatchlistAddUrl(watchlist), {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json, */*',
-            'Content-Type': 'application/json',
-            'Authorization': `Token ${authToken}`,
-            },
-        body: JSON.stringify({'symbols': {symbols})
-        })
-      .then(res => res.json())
-      .then(res => console.log(res))
-      .catch(err => console.log('Fetch Error :-S', err))
-    })
-  };
-}
-
-export function deleteWatchlistInstrument(symbol, watchlist) {
-  /*
-  - *Needs authToken*
-  - URI: api.robinhood.com/watchlists/{watchlistName}/{instrumentId}/
-  - Method: DELETE
-  -
-  */
-  return {
-    type: types.DELETE_WATCHLIST_INSTRUMENT,
-    watchlist
-  };
-}
+export function loginFailure(error) {
+  return {type: types.LOGIN_FAILURE, error};}
 
 /* ////////////////////////////////
 //        Robinhood Gold         //
@@ -214,15 +125,3 @@ function fetchInitialRequirements(equity) {
 
 function fetchMaintenance(equity) {
   return {type: types.FETCH_RG_MAINTENANCE, equity};}
-
-export function postLogin(credentials) {
-  return {type: types.POST_LOGIN, credentials};}
-
-export function loginSuccess(authToken) {
-  return {type: types.LOGIN_SUCCESS, authToken};}
-
-export function loginFailure(error) {
-  return {type: types.LOGIN_FAILURE, error};}
-
-export function recievePortfolio(response) {
-  return {type: types.RETRIEVE_PORTFOLIO, response;}
