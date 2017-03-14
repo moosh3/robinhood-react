@@ -36,7 +36,6 @@ function loginSuccessPre(authToken) {
   return dispatch => {
     dispatch(fetchAuthedUser(authToken));
     dispatch(fetchWatchlists(authToken));
-    dispatch(recieveRobinUser(user));
     dispatch(fetchPortfolio(authToken));
     dispatch(fetchPositions(authToken));
   }
@@ -52,6 +51,9 @@ function logoutUser() {
 
 function resetAuthed(authToken) {
   // Hits the logout endpoint
+  return (dispatch, state) => {
+    Cookies.remove(COOKIE_PATH);
+  }
 }
 
 function initAuth() {
