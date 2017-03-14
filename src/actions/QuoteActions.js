@@ -45,6 +45,7 @@ function fetchQuoteData(symbol) {
       .then(response => response.json())
       .then(json => {
         dispatch(quoteDataSuccess(response));
+        dispatch(recieveQuoteData(json));
       })
       .catch(error => {
         dispatch(quoteDataFailure(error))

@@ -46,15 +46,15 @@ import * as types from '../constants/ActionTypes';
   }
 */
 
-export function placeOrder(order) {
+export function placeOrder(authToken, order) {
   return { type: types.PLACE_ORDER, order };
 }
 
-export function placeBuyOrder(order) {
+export function placeBuyOrder(authToken, order) {
   return { type: types.PLACE_BUY_ORDER, order };
 }
 
-export function placeSellOrder(order) {
+export function placeSellOrder(authToken, order) {
   return { type: types.PLACE_SELL_ORDER, order };
 }
 
@@ -66,6 +66,6 @@ export function gatherOrderInfo(orderId, authToken) {
   return { type: types.GATHER_ORDER_INFO, orderId, authToken };
 }
 
-export function cancelOrder(order) {
+export function cancelOrder(authToken, order) {
   return { type: types.CANCEL_ORDER, order };
 }
