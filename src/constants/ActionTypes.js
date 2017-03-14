@@ -14,16 +14,27 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 //        Portfolio Data         //
 /////////////////////////////////*/
 
-export const FETCH_PORTFOLIO = 'FETCH_PORTFOLIO';
-export const PORTFOLIO_SUCCESS = 'PORTFOLIO_SUCCESS';
-export const PORTFOLIO_FAILURE = 'PORTFOLIO_FAILURE';
+export const REQUEST_PORTFOLIO = 'REQUEST_PORTFOLIO';
+export const RECIEVE_PORTFOLIO = 'PORTFOLIO_SUCCESS';
 
 /* ////////////////////////////////
 //        Positions Data         //
 /////////////////////////////////*/
 
-export const GET_POSTITIONS = 'GET_POSTITIONS';
-export const GET_SECURITIES_OWNED = 'GET_SECURITIES_OWNED';
+export const REQUEST_POSITIONS = 'REQUEST_POSITIONS';
+export const RECIEVE_POSITIONS = 'RECIEVE_POSITIONS';
+
+/* ////////////////////////////////
+//        Watchlist Actions      //
+////////////////////////////////*/
+
+export const REQUEST_WATCHLISTS = 'REQUEST_WATCHLISTS';
+export const RECIEVE_WATCHLISTS = 'RECIEVE_WATCHLISTS';
+// CRUD actions 
+export const CREATE_WATCHLIST = 'CREATE_WATCHLIST';
+export const DELETE_WATCHLIST = 'DELETE_WATCHLIST';
+export const ADD_TO_WATCHLIST = 'ADD_TO_WATCHLIST';
+export const DELETE_FROM_WATCHLIST = 'DELETE_FROM_WATCHLIST';
 
 /* ////////////////////////////////
 //        Robinhood Gold         //
@@ -34,16 +45,11 @@ export const GET_RG_INITIAL_REQUIREMENTS = 'GET_RG_INITIAL_REQUIREMENTS';
 export const GET_RG_MAINTENANCE = 'GET_RG_MAINTENANCE';
 
 /* ////////////////////////////////
-//  GET Data/Quote statistics   //
+//       Quote statistics        //
 /////////////////////////////////*/
 
-export const GET_QUOTE_DATA = 'GET_QUOTE_DATA';
-export const QUOTE_DATA_SUCCESS = 'QUOTE_DATA_SUCCESS';
-export const QUOTE_DATA_FAILURE = 'QUOTE_DATA_FAILURE';
-
-export const GET_NEWS = 'GET_NEWS';
-export const NEWS_SUCCESS = 'NEWS_SUCCESS';
-export const NEWS_FAILURE = 'NEWS_FAILURE';
+export const REQUEST_QUOTE = 'REQUEST_QUOTE';
+export const RECIEVE_QUOTE = 'RECIEVE_QUOTE';
 
 /* ////////////////////////////////
 //        Placing Order         //
@@ -67,12 +73,3 @@ export const CANCEL_ORDER_FAILURE = 'CANCEL_ORDER_FAILURE';
 
 export const GATHER_ORDER_INFO = 'GATHER_ORDER_INFO';
 export const GATHER_RECENT_ORDERS = 'GATHER_RECENT_ORDERS';
-
-/* ////////////////////////////////
-//        Watchlist Actions      //
-////////////////////////////////*/
-
-export const CREATE_WATCHLIST = 'CREATE_WATCHLIST';
-export const GET_WATCHLISTS = 'GET_WATCHLISTS';
-export const ADD_INSTRUMENT_TO_WATCHLIST = 'ADD_INSTRUMENT_TO_WATCHLIST';
-export const DELETE_WATCHLIST_INSTRUMENT = 'DELETE_WATCHLIST_INSTRUMENT';

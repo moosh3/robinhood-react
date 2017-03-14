@@ -70,15 +70,49 @@ export function recieveWatchLists(response) {
   return {type: types.RECIEVE_WATCHLISTS, response}
 }
 
-export function fetchWatchlists(authToken, watchlist) {
-  return {type: types.GET_WATCHLISTS, watchlists};
+function fetchWatchlists(authToken, watchlist) {
+  return dispatch =>
+    fetch(url, {
+
+    })
+}
+
+function shouldFetchWatchlists(authToken) {
+  const watchlists = state.user[watchlists];
+  if (!watchlists) {
+    return true
+  }
+  if (watchlists.isFetching) {
+    return false
+  }
+  return dispatch(fetchWatchlists(authToken));
+}
+
+export function fetchWatchlistsIfNeeded(authToken) {
+  return (dispatch, getState) => {
+    if (shouldFetchWatchlists(getState(), authToken)) {
+      return dispatch(fetchWatchlists(authToken))
+    }
+  }
 }
 
 export function createWatchlist(authToken, name) {
   return {type: types.CREATE_WATCHLIST, name};
 }
 
-export function addBulkInstrumentWatchlist(authToken, symbol, watchlist) {
+export function deleteWatchlist(authToken, name) {
+  return {type: types.DELETE_WATCHLIST, name};
+}
+
+export function addInstrumentWatchlist(authToken, symbol, watchlist) {
+  return {type: types.ADD_TO_WATCHLIST}
+}
+
+export function deleteWatchlistInstrument(symbol, watchlist) {
+  return {type: types.DELETE_FROM_WATCHLIST, watchlist};
+}
+
+export function addBulkInstrumentWatchlist(authToken, symbols, watchlist) {
   return {
     fetch(constructWatchlistAddUrl(watchlist), {
         method: 'POST',
@@ -94,8 +128,4 @@ export function addBulkInstrumentWatchlist(authToken, symbol, watchlist) {
       .catch(err => console.log('Fetch Error :-S', err))
     })
   };
-}
-
-export function deleteWatchlistInstrument(symbol, watchlist) {
-  return {type: types.DELETE_WATCHLIST_INSTRUMENT, watchlist};
 }

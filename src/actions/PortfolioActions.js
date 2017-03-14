@@ -40,7 +40,7 @@ export function requestPortfolio(authToken) {
 }
 
 export function recievePortfolio(response) {
-  return {type: types.RETRIEVE_PORTFOLIO, response;}
+  return {type: types.RECIEVE_PORTFOLIO, response};
 }
 
 function fetchPortfolio(authToken) {

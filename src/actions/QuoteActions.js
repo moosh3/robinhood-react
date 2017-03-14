@@ -27,11 +27,11 @@ import { constructUrl, checkStatus } from '../shared/Utils';
 */
 
 export function requestQuoteData(symbol) {
-  return: {type: types.REQUEST_QUOTE_DATA, symbol};
+  return: {type: types.REQUEST_QUOTE, symbol};
 }
 
 export function recieveQuoteData(response) {
-  return {type: QUOTE_DATA_SUCCESS, quote: response.data};
+  return {type: types.RECIEVE_QUOTE, quote: response.data};
 }
 
 function fetchQuoteData(symbol) {
