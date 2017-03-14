@@ -141,6 +141,7 @@ Order Actions
 
 ### Flow
 
+```
 - Dashboard
   - total cash
   - news
@@ -170,3 +171,4 @@ Order Actions
   - linked accounts
   - transfer to robinhood
   - transfer to bank
+```
