@@ -25,6 +25,17 @@ import { constructUrl, checkStatus } from '../shared/Utils';
     "updated_at": "2016-03-18T15:45:28Z"
   }
 */
+function requestQuoteData(symbol) {
+  return: {type: types.REQUEST_QUOTE_DATA, symbol};
+}
+
+function recieveQuoteData(json) {
+  return {
+    type: QUOTE_DATA_SUCCESS,
+    quote: json.data,
+  }
+}
+
 
 function fetchQuoteData(symbol) {
   return (dispatch, getState) => {
@@ -41,10 +52,22 @@ function fetchQuoteData(symbol) {
   };
 }
 
+function shouldFetchQuote(symbol) {
+  const quotes = state.quotes[quote]
+  if (!quotes) {
+    return true
+  }
+  if (quotes.isFetching) {
+    return false
+  }
+  return dispatch(fetchQuoteData(symbol));
+}
+
 export function fetchQuoteDataIfNeeded(symbol) {
   return (dispatch, getState) => {
-    const { entities } = getState(); // entities == normalized quote data
-    if //
+    if (shouldFetchQuote(getState(), symbol)) {
+      return dispatch(fetchQuoteData(symbol))
+    }
   }
 }
 

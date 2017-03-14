@@ -8,6 +8,10 @@ import { checkStatus } from '../shared/Utils';
 
 const COOKIE_PATH = 'authToken';
 
+function authUser(authToken) {
+  return dispatch =>
+    dispatch(fetchAuthedUser(authToken));
+}
 
 function loginUser(credentials) {
   let url = apiUrl + endpoints['login'];
@@ -24,27 +28,39 @@ function loginUser(credentials) {
     })
     .then(checkStatus)
     .then(response => response.json())
-    .then(json[0] => dispatch(loginSuccess(authToken)))
+    .then(json[0] => dispatch(loginSuccessPre(authToken)))
   };
 }
 
-function logoutUser() {
+function loginSuccessPre(authToken) {
+  return dispatch => {
+    dispatch(fetchAuthedUser(authToken));
+    dispatch(fetchWatchlists(authToken));
+    dispatch(recieveRobinUser(user));
+    dispatch(fetchPortfolio(authToken));
+    dispatch(fetchPositions(authToken));
+  }
+}
 
+function logoutUser() {
+  return (dispatch, getState) => {
+    Cookies.remove(COOKIE_PATH);
+    const { authed } = getState();
+    return dispatch(resetAuthed(authToken));
+  }
+}
+
+function resetAuthed(authToken) {
+  // Hits the logout endpoint
 }
 
 function initAuth() {
   return dispatch => {
-    const accessToken = Cookies.get(COOKIE_PATH);
-    if (accessToken) {
-      return dispatch(authUser(accessToken));
+    const authToken = Cookies.get(COOKIE_PATH);
+    if (authToken) {
+      return dispatch(authUser(authToken));
     }
     return null;
-  };
-}
-
-function authUser(authToken) {
-  return dispatch => {
-    dispatch(fetchAuthedUser(authToken));
   };
 }
 
@@ -91,6 +107,7 @@ function fetchPortfolio(authToken) {
     })
     .then(checkStatus)
     .then(response => response.json())
+    .then(dispatch(recievePortfolio()))
     .then(return response.json())
   };
 }
@@ -100,34 +117,22 @@ function fetchPortfolio(authToken) {
 /////////////////////////////////*/
 
 function fetchVolatility(equity) {
-  return {
-    type: types.FETCH_RG_VOLATILITY,
-    equity
-  };
-}
+  return {type: types.FETCH_RG_VOLATILITY, equity};}
 
 function fetchInitialRequirements(equity) {
-  return {
-    type: types.FETCH_RG_INITIAL_REQUIREMENTS,
-    equity
-  };
-}
+  return {type: types.FETCH_RG_INITIAL_REQUIREMENTS, equity};}
 
 function fetchMaintenance(equity) {
-  return {
-    type: types.FETCH_RG_MAINTENANCE,
-    equity
-  };
-}
+  return {type: types.FETCH_RG_MAINTENANCE, equity};}
 
 export function postLogin(credentials) {
-  return {type: types.POST_LOGIN, credentials};
-}
+  return {type: types.POST_LOGIN, credentials};}
 
 export function loginSuccess(authToken) {
-  return {type: types.LOGIN_SUCCESS};
-}
+  return {type: types.LOGIN_SUCCESS};}
 
 export function loginFailure(error) {
-  return {type: types.LOGIN_FAILURE};
-}
+  return {type: types.LOGIN_FAILURE};}
+
+export function recievePortfolio(response) {
+  return {type: types.RETRIEVE_PORTFOLIO, response;}
