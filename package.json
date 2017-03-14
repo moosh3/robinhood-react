@@ -31,7 +31,9 @@
     "react-search-input": "^0.10.4",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.1",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-hot-middleware": "^2.17.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
