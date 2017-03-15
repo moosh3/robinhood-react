@@ -1,11 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-const propTypes = {
-  authed: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
-}
-
-class Banner extends Component {
+const Banner = () => {
 
   render() {
     const {} = this.props;
@@ -16,6 +11,9 @@ class Banner extends Component {
   }
 }
 
-Banner.propTypes = propTypes;
+Banner.propTypes = {
+  authed: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
+}
 
 export default Banner;

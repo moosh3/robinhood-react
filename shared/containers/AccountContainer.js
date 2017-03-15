@@ -8,6 +8,10 @@ class AccountContainer extends Component {
   }
 }
 
+AccountContainer.propTypes = {
+  isLoading: propTypes.object.isRequired,
+}
+
 function mapStateToProps(state) {
   const { path } = navigator.route;
   return {
