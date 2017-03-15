@@ -30,52 +30,67 @@ You can find the style guide for writing react components and their redux counte
 ## Project Structure
 
 ```
-src/
-    -> actions/
-        -> authedActions.js
-        -> orderActions.js
-        -> quoteActions.js
-    -> components/
-        -> Banner.js
-        -> FilterSearch.js
-        -> Footer.js
-        -> Link.js
-        -> Nav.js
-        -> NavSearch.js
-        -> Quote.js
-        -> Table.js
-    -> containers/
-        -> AccountContainer.js
-        -> App.js
-        -> DashboardContainer.js
-        -> LoginContainer.js
-        -> NotFoundPage.js
-        -> OrderContainer.js
-        -> QuoteContainer.js
-        -> Root.js
-    -> constants/
-        -> ActionTypes.js
-        -> Config.js
-        -> Robin.js
-        -> Schemas.js
-    -> reducers/
-        -> authentication.js
-        -> order.js
-        -> quote.js
-        -> rootReducer.js
-        -> user.js
-        -> watchlist.js
-    -> server/
-        -> index.js
-    -> shared/
-        -> apiService.js
-        -> utils.js
-    -> store/
-        -> configureStore.js
-    routes.js
-    index.html
-    index.js
-webpack.config.js
+|-- .babelrc
+|-- .eslintrc
+|-- .eslintignore
+|-- .gitignore
+|-- .dockerignore
+|-- .editorconfig
+|-- Dockerfile
+|-- README.md
+|-- CHANGELOG.md
+|-- LICENSE
+|-- package.json
+|-- yarn.lock
+|-- client/
+|    |-> index.js
+|    |-> routes.js
+|-- shared/
+|  |-- actions/
+|    |-- AccountActions.js
+|    |-- AuthedActions.js
+|    |-- NewsActions.js
+|    |-- OrderActions.js
+|    |-- PortfolioActions.js
+|    |-- QuoteActions.js
+|    |-- WatchlistActions.js
+|  |-- components/
+|    |-- Account.js
+|    |-- Banner.js
+|    |-- FilterSearch.js
+|    |-- Footer.js
+|    |-- Link.js
+|    |-- Nav.js
+|    |-- NavSearch.js
+|    |-- Quote.js
+|    |-- Row.js
+|    |-- Table.js
+|  |-- containers/
+|    |-- AccountContainer.js
+|    |-- App.js
+|    |-- DashboardContainer.js
+|    |-- LoginContainer.js
+|    |-- NotFoundPage.js
+|    |-- OrderContainer.js
+|    |-- QuoteContainer.js
+|    |-- Root.js
+|  |-- constants/
+|    |-- ActionTypes.js
+|    |-- Config.js
+|    |-- Schemas.js
+|  |-- reducers/
+|    |-- authentication.js
+|    |-- order.js
+|    |-- quote.js
+|    |-- rootReducer.js
+|    |-- user.js
+|    |-- watchlist.js
+|  |-- store/
+|    |-- configureStore.js
+|-- server/
+|    |-- index.js
+|    |-- server.js
+|-- webpack.config.js
 ```
 
 
