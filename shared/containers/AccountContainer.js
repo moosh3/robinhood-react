@@ -19,4 +19,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(AccountContainer);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountContainer);

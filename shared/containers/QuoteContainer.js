@@ -30,4 +30,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(SongContainer);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SongContainer);
