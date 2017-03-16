@@ -2,15 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import fetchQuote from '../actions/QuoteActions';
 
 class Quote extends Component {
+  /* Quote component that is rendered when a user
+  selects a singular quote to view fundamentals, basic
+  info, etc. Should already have quoteData['symbol'], so
+  we can use that to dispatch the data
+  */
 
   componentWillMount() {
     const { dispatch, symbol } = this.props;
     dispatch(fetchQuote(symbol));
-  }
-
-  handleClick() {
-    const { dispatch, symbol } = this.props;
-    dispatch(fetchQuote(symbol))
   }
 
   /*
@@ -23,12 +23,12 @@ class Quote extends Component {
   */
 
   render() {
-    const { authed, dispatch, symbol } = this.props;
+    const { authed, dispatch, quoteData, symbol } = this.props;
 
     return (
       <div>
         <h1>Quote</h1>
-        <button onClick={this.handleClick}
+        <p>Ticker: {symbol}</p>
       </div>
     )
   }

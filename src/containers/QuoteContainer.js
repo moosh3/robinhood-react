@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Song from '../components/Song';
-import { getPlayingSongId } from '../utils/PlayerUtils';
+import QuoteDetail from '../components/QuoteDetail';
 
 class QuoteContainer extends Component {
   render() {
@@ -10,11 +9,13 @@ class QuoteContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const { authed, dispatch, symbol } = state;
+  const { authed, dispatch, quoteData, symbol } = state;
+  const { symbol } = quoteData[symbol];
 
   return {
     authed,
     dispatch,
+    quoteData,
     symbol
   };
 }

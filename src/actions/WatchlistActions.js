@@ -61,15 +61,22 @@ deleteWatchlistInstrument
   - URI: api.robinhood.com/watchlists/{watchlistName}/{instrumentId}/
   - Method: DELETE
   - Sample Response:
-  
+
 */
 
 export function requestWatchlists(authToken) {
-  return {type: types.REQUEST_WATCHLISTS, authToken};
+  return {
+    type: types.REQUEST_WATCHLISTS,
+    authToken
+  };
 }
 
 export function recieveWatchLists(response) {
-  return {type: types.RECIEVE_WATCHLISTS, response}
+  return {
+    type: types.RECIEVE_WATCHLISTS,
+    response,
+    recievedAt: Date.now()
+  };
 }
 
 function fetchWatchlists(authToken, watchlist) {

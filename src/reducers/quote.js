@@ -17,7 +17,7 @@ const quoteReducer = (state = initialState.quoteData, action) => {
     case types.RECIEVE_QUOTE:
       return {
         isFetching: false,
-        items: action.fetchQuote,
+        quoteData: action.data,
         ...state,
       }
     default:

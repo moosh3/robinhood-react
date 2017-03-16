@@ -40,19 +40,33 @@ AccountInfo
 */
 
 function requestAccountID(authToken) {
-  return: {type: types.REQUEST_ACCOUNT_ID, authToken};
+  return: {
+    type: types.REQUEST_ACCOUNT_ID,
+    authToken,
+  };
 }
 
 function recieveAccountID(response) {
-  return: {type: types.RECIEVE_ACCOUNT_ID, response};
+  return: {
+    type: types.RECIEVE_ACCOUNT_ID,
+    response,
+    recievedAt: Date.now()
+  };
 }
 
 function requestAccountInfo(authToken) {
-  return: {type: types.REQUEST_ACCOUNT_INFO, authToken};
+  return: {
+    type: types.REQUEST_ACCOUNT_INFO,
+    authToken
+  };
 }
 
 function recieveAccountInfo(response) {
-  return: {type: types.RECIEVE_ACCOUNT_INFO, response};
+  return: {
+    type: types.RECIEVE_ACCOUNT_INFO,
+    response
+    recievedAt: Date.now()
+  };
 }
 
 function fetchAccountID(authToken) {

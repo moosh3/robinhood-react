@@ -47,22 +47,29 @@ export function requestQuote(symbol) {
   return: {type: types.REQUEST_QUOTE, symbol};
 }
 
-export function recieveQuote(quote) {
-  return {type: types.RECIEVE_QUOTE, quote};
+export function recieveQuote(symbol, json) {
+  return {
+    type: types.RECIEVE_QUOTE,
+    data: json.data.children.map(child => child.data)};
+    symbol: Object.assign({}, symbol, { symbol: json.symbol }),
+    recievedAt: Date.now()
 }
 
 export function requestQuoteError(bool) {
-  return {type: types.REQUEST_QUOTE_ERROR, error: bool};
+  return {
+    type: types.REQUEST_QUOTE_ERROR,
+    error: bool
+  };
 }
 
 function fetchQuote(symbol) {
   return dispatch => {
-    dispatch(requestQuote(symbol));
+    dispatch(requestQuote(symbol)); // Show loading spinner
 
     return fetch(constructQuoteUrl(symbol))
       .then(response => response.json())
-      .then(items => {
-        dispatch(recieveQuote(items));
+      .then(json => {
+        dispatch(recieveQuote(symbol, json));
       })
       .catch(error => {
         dispatch(quoteRequestError(true))

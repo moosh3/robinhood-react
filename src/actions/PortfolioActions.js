@@ -35,11 +35,19 @@ import { checkStatus } from '../shared/Utils';
 */
 
 export function requestPortfolio(authToken) {
-  return {type: types.REQUEST_PORTFOLIO, authToken}
+  return {
+    type: types.REQUEST_PORTFOLIO,
+    authToken
+    recievedAt: Date.now()
+  };
 }
 
 export function recievePortfolio(response) {
-  return {type: types.RECIEVE_PORTFOLIO, response};
+  return {
+    type: types.RECIEVE_PORTFOLIO,
+    response,
+    recievedAt: Date.now()
+  };
 }
 
 function fetchPortfolio(authToken) {
@@ -122,11 +130,18 @@ export function fetchPortfolioIfNeeded(authToken) {
 */
 
 function requestPositions(authToken) {
-  return: {type: types.REQUEST_POSITIONS, authToken};
+  return: {
+    type: types.REQUEST_POSITIONS,
+    authToken
+  };
 }
 
 function recievePositions(response) {
-  return: {type: types.RECIEVE_POSITIONS, response};
+  return: {
+    type: types.RECIEVE_POSITIONS,
+    response,
+    recievedAt: Date.now()
+  };
 }
 
 function fetchPositions(authToken) {

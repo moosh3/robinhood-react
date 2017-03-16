@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-const Account = () => {
+const Account = (props) => {
 
   render() {
     return(
