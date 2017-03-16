@@ -2,6 +2,8 @@
 
 This packages uses [Robinhoods API](https://github.com/sanko/Robinhood) allowing you to use Robinhood in your browser. Limited to (well designed!) mobile apps no more!
 
+Check out the [Trello board](https://trello.com/b/A6Kpou2w/robinhood-react) to stay up to date on the development!
+
 ## Requirements
 * node `^7.0.0`  <-- probably works on older versions, but this is the only versions its been tested on
 * yarn `^0.20.3`
