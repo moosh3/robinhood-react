@@ -1,15 +1,7 @@
 import * from '../constants/ActionTypes';
+import initialState from './initialState';
 
-const initialState = {
-  username: '',
-  password: '',
-  authToken: '',
-  isLoggingIn: false,
-  isLoggedIn: false,
-  error: null
-};
-
-const authenticationReducer = (state = initialState, action) => {
+const authenticationReducer = (state = initialState.accountData.auth, action) => {
   switch (action.type) {
     case LOGIN_ATTEMPT:
       return {

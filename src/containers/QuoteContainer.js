@@ -10,31 +10,15 @@ class QuoteContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const { authed, entities, environment, navigator, player, playlists } = state;
-  const { songs, users } = entities;
-  const { height } = environment;
-  const { path } = navigator.route;
-  const songId = Number(path[1]);
-
-  const playingSongId = getPlayingSongId(player, playlists);
+  const { authed, dispatch, symbol } = state;
 
   return {
     authed,
-    height,
-    player,
-    playingSongId,
-    playlists,
-    songId,
-    songs,
-    users,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
+    dispatch,
+    symbol
   };
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(SongContainer);
+
+export default connect(mapStateToProps)(SongContainer);

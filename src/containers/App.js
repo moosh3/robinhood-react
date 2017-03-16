@@ -13,55 +13,17 @@ import SongContainer from '../containers/SongContainer';
 import SongsContainer from '../containers/SongsContainer';
 import UserContainer from '../containers/UserContainer';
 
-const propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  height: PropTypes.number,
-  isMobile: PropTypes.bool,
-  path: PropTypes.array.isRequired,
-  width: PropTypes.number,
-};
-
 class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(initEnvironment());
     dispatch(initAuth());
-    dispatch(initNavigator());
   }
 
-  renderContent() {
-    const { path } = this.props;
-    switch (path[0]) {
-      case 'songs':
-        switch (path.length) {
-          case 1:
-            return <SongsContainer />;
-          case 2:
-            return <SongContainer />;
-          default:
-            return null;
-        }
-      case 'users':
-        return <UserContainer />;
-      case 'me':
-        return <MeContainer />;
-      default:
-        return null;
-    }
-  }
 
   render() {
     const { height, isMobile, width } = this.props;
-    if (isMobile) {
-      return (
-        <div className="mobile" style={{ height: `${height}px`, width: `${width}px` }}>
-          <PlayerContainer />
-          {this.renderContent()}
-          <NavContainer />
-        </div>
-      );
-    }
-
+    
     return (
       <div>
         <NavContainer />
@@ -73,20 +35,21 @@ class App extends Component {
   }
 }
 
-App.propTypes = propTypes;
+App.propTypes = {
+  isAuthed: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string
+};
 
 function mapStateToProps(state) {
-  const { environment, navigator } = state;
-  const { height, isMobile, width } = environment;
-  const { path } = navigator.route;
+  const { quote, auth } = state;
+  const { isAuthed, errorMessage } = auth;
 
   return {
-    height,
-    isMobile,
-    path,
-    width,
+    quote,
+    isAuthed,
+    errorMessage
   };
 }
-
 
 export default connect(mapStateToProps)(App);

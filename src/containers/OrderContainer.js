@@ -2,13 +2,13 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/AccountActions';
 
-class EquityContainer extends Component {
+class OrderContainer extends Component {
   render() {
-    return <Equity {...this.props} />;
+    return <Order {...this.props} />;
   }
 };
 
-EquityContainer.propTypes = {
+OrderContainer.propTypes = {
 
 };
 

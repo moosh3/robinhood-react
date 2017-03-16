@@ -1,8 +1,8 @@
 export default {
-  isLoading: false,
   authed: false,
   token: '',
-  quoteData: {
+  quoteData: [
+    isFetching: false,
     askPrice: '',
     askSize: '',
     bidPrice: '',
@@ -14,7 +14,7 @@ export default {
     symbol: '',
     trading_halted: false,
     updated_at: '',
-    fundamentals: {
+    fundamentals: [
       open: '',
       high: '',
       low: '',
@@ -27,15 +27,15 @@ export default {
       peRation: '',
       description: '',
       instrument: '',
-    }
-  },
-  accountData: {
-    userId: {
+    ]
+  ],
+  accountData: [
+    userId: [
       username: '',
       url: '',
       id: '',
-    },
-    auth: {
+    ],
+    auth: [
       username: '',
       firstName: '',
       lastName: '',
@@ -48,8 +48,8 @@ export default {
       internationalInfo: '',
       employment: '',
       additionalInfo: '',
-    },
-    portfolio: {
+    ],
+    portfolio: [
       account: '',
       adjustedEquityPreviousClose: '',
       equity: '',
@@ -65,8 +65,8 @@ export default {
       unwithdrawableDeposits: '',
       url: '',
       withdrawableAmount: '',
-    },
-    basicInfo: {
+    ],
+    basicInfo: [
       phoneNumber: '',
       city: '',
       numberDependents: '',
@@ -80,9 +80,9 @@ export default {
       user: '',
       address: '',
       taxIdSsn: '',
-    }
-  },
-  order: {
+    ]
+  ],
+  order: [
     account: '',
     instrument: '',
     symbol: '',
@@ -94,5 +94,5 @@ export default {
     quantity: '',
     side: '',
     client_id: '',
-  },
+  ],
 };

@@ -1,34 +1,23 @@
 import * as types from '../constants/ActionTypes';
+import initialState from './initialState';
 
-const initialState = {
-  isLoggedIn: true,
-  response: {
-    ask_price: '',
-    ask_size: '',
-    bid_price: '',
-    last_trade_price: '',
-    last_extended_hours_trade_price: null,
-    previous_close: '',
-    adjusted_previous_close: '',
-    previous_close_date: '',
-    symbol: '',
-    trading_halted: '',
-    updated_at: '',
-  }
-}
 
-const quoteReducer = (state = initialState, action) => {
+const quoteReducer = (state = initialState.quoteData, action) => {
   switch (action.type) {
-    case GET_QUOTE_DATA:
+    case types.REQUEST_QUOTE:
       return {
+        isFetching: true,
         ...state,
       };
-    case QUOTE_DATA_SUCCESS:
+    case types.REQUEST_QUOTE_ERROR:
       return {
+        error: true,
         ...state,
       }
-    case QUOTE_DATA_FAILURE:
+    case types.RECIEVE_QUOTE:
       return {
+        isFetching: false,
+        items: action.fetchQuote,
         ...state,
       }
     default:

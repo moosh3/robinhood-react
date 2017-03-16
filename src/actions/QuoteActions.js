@@ -43,44 +43,48 @@ Quote Fundamentals
     }
 */
 
-export function requestQuoteData(symbol) {
+export function requestQuote(symbol) {
   return: {type: types.REQUEST_QUOTE, symbol};
 }
 
-export function recieveQuoteData(response) {
-  return {type: types.RECIEVE_QUOTE, response};
+export function recieveQuote(quote) {
+  return {type: types.RECIEVE_QUOTE, quote};
 }
 
-function fetchQuoteData(symbol) {
+export function requestQuoteError(bool) {
+  return {type: types.REQUEST_QUOTE_ERROR, error: bool};
+}
+
+function fetchQuote(symbol) {
   return dispatch => {
-    dispatch(getQuoteData(symbol));
+    dispatch(requestQuote(symbol));
 
     return fetch(constructQuoteUrl(symbol))
       .then(response => response.json())
-      .then(json => {
-        dispatch(recieveQuoteData(json));
+      .then(items => {
+        dispatch(recieveQuote(items));
       })
-      //.catch(error => {
-      //  dispatch(quoteDataFailure(error)) //TODO
+      .catch(error => {
+        dispatch(quoteRequestError(true))
       })
   };
 }
 
 function shouldFetchQuote(symbol) {
-  const quotes = state.quotes[quote];
+  const quotes = state.quote[symbol];
   if (!quotes) {
     return true
   }
   if (quotes.isFetching) {
     return false
   }
-  return dispatch(fetchQuoteData(symbol));
+  return dispatch(fetchQuote(symbol));
 }
 
 export function fetchQuoteDataIfNeeded(symbol) {
   return (dispatch, getState) => {
     if (shouldFetchQuote(getState(), symbol)) {
-      return dispatch(fetchQuoteData(symbol))
+      return dispatch(fetchQuote(symbol))
     }
   }
 }
