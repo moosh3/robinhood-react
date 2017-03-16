@@ -2,18 +2,18 @@
 //        Authentication        //
 /////////////////////////////////*/
 
-export const POST_LOGIN = 'POST_LOGIN';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const REQUEST_LOGIN = 'REQUEST_LOGIN';
+export const RECIEVE_LOGIN = 'RECIEVE_LOGIN';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const POST_LOGOUT = 'POST_LOGOUT';
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
+export const RECIEVE_LOGOUT = 'RECIEVE_LOGOUT';
 
 /* ////////////////////////////////
 //        Portfolio Data         //
 /////////////////////////////////*/
 
+export const INVALIDATE_PORTFOLIO = 'INVALIDATE_PORTFOLIO'
 export const REQUEST_PORTFOLIO = 'REQUEST_PORTFOLIO';
 export const RECIEVE_PORTFOLIO = 'PORTFOLIO_SUCCESS';
 
@@ -21,6 +21,7 @@ export const RECIEVE_PORTFOLIO = 'PORTFOLIO_SUCCESS';
 //        Positions Data         //
 /////////////////////////////////*/
 
+export const INVALIDATE_POSITIONS = 'INVALIDATE_POSITIONS';
 export const REQUEST_POSITIONS = 'REQUEST_POSITIONS';
 export const RECIEVE_POSITIONS = 'RECIEVE_POSITIONS';
 
@@ -28,9 +29,11 @@ export const RECIEVE_POSITIONS = 'RECIEVE_POSITIONS';
 //        Watchlist Actions      //
 ////////////////////////////////*/
 
+export const INVALIDATE_WATCHLISTS = 'INVALIDATE_WATCHLISTS';
 export const REQUEST_WATCHLISTS = 'REQUEST_WATCHLISTS';
 export const RECIEVE_WATCHLISTS = 'RECIEVE_WATCHLISTS';
-// CRUD actions 
+
+// CRUD actions
 export const CREATE_WATCHLIST = 'CREATE_WATCHLIST';
 export const DELETE_WATCHLIST = 'DELETE_WATCHLIST';
 export const ADD_TO_WATCHLIST = 'ADD_TO_WATCHLIST';
@@ -49,6 +52,7 @@ export const GET_RG_MAINTENANCE = 'GET_RG_MAINTENANCE';
 /////////////////////////////////*/
 
 export const REQUEST_QUOTE = 'REQUEST_QUOTE';
+export const REQUEST_QUOTE_ERROR = 'REQUEST_QUOTE_ERROR'
 export const RECIEVE_QUOTE = 'RECIEVE_QUOTE';
 
 /* ////////////////////////////////

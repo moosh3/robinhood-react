@@ -1,20 +1,18 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/AccountActions';
+import Dashboard from '../components/Dashboard';
 
 class DashboardContainer extends Component {
   render() {
     return <Dashboard {...this.props} />;
   }
-};
-
-DashboardContainer.propTypes = {
-
-};
+}
 
 function mapStateToProps(state) {
+  const { authed, apiData } = state;
   return {
-    apiData: state
+    auth,
+    apiData
   };
 }
 

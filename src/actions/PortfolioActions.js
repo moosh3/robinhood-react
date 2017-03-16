@@ -34,6 +34,13 @@ import { checkStatus } from '../shared/Utils';
   }
 */
 
+export const invalidatePortfolio = (portfolio) => {
+  return {
+    type: types.INVALIDATE_PORTFOLIO,
+    portfolio
+  }
+}
+
 export function requestPortfolio(authToken) {
   return {
     type: types.REQUEST_PORTFOLIO,
@@ -68,15 +75,17 @@ function fetchPortfolio(authToken) {
   };
 }
 
-function shouldFetchPortfolio(state, authToken) {
+function shouldFetchPortfolio(state) {
   const portfolio = state.portfolio;
-  if (!portfolio) {
+
+  if (_.isEmpty(portfolio)) {
     return true;
   }
   if (portfolio.isFetching) {
     return false;
+  } else {
+    return portfolio.didInvalidate;
   }
-  return true;
 }
 
 export function fetchPortfolioIfNeeded(authToken) {
@@ -129,6 +138,13 @@ export function fetchPortfolioIfNeeded(authToken) {
     }
 */
 
+export const invalidatePositions = (positions) => {
+  return {
+    type: types.INVALIDATE_POSITIONS,
+    positions
+  }
+}
+
 function requestPositions(authToken) {
   return: {
     type: types.REQUEST_POSITIONS,
@@ -136,10 +152,10 @@ function requestPositions(authToken) {
   };
 }
 
-function recievePositions(response) {
+function recievePositions(json) {
   return: {
     type: types.RECIEVE_POSITIONS,
-    response,
+    positions: json,
     recievedAt: Date.now()
   };
 }
@@ -159,15 +175,17 @@ function fetchPositions(authToken) {
   }
 }
 
-function shouldFetchPositions(state, authToken) {
+function shouldFetchPositions(state) {
   const positions = state.positions;
-  if (!positions) {
+
+  if (_.isEmpty(positions)) {
     return true;
   }
   if (positions.isFetching) {
     return false;
+  } else {
+    return positions.didInvalidate;
   }
-  return true;
 }
 
 export function fetchPositionsIfNeeded(authToken) {

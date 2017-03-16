@@ -64,6 +64,13 @@ deleteWatchlistInstrument
 
 */
 
+export const invalidateWatchlists = (watchlists) => {
+  return {
+    type: types.INVALIDATE_WATCHLISTS,
+    watchlists
+  }
+}
+
 export function requestWatchlists(authToken) {
   return {
     type: types.REQUEST_WATCHLISTS,
@@ -71,10 +78,10 @@ export function requestWatchlists(authToken) {
   };
 }
 
-export function recieveWatchLists(response) {
+export function recieveWatchLists(json) {
   return {
     type: types.RECIEVE_WATCHLISTS,
-    response,
+    watchlists: json,
     recievedAt: Date.now()
   };
 }
@@ -82,19 +89,27 @@ export function recieveWatchLists(response) {
 function fetchWatchlists(authToken, watchlist) {
   return dispatch =>
     fetch(url, {
-
-    })
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json, */*',
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${authToken}`
+      })
+      .then(response => response.json())
+      .then(json => dispatch(recieveWatchLists(json)))
 }
 
 function shouldFetchWatchlists(authToken) {
   const watchlists = state.user[watchlists];
-  if (!watchlists) {
-    return true
+
+  if (_.isEmpty(watchlists)) {
+    return true;
   }
   if (watchlists.isFetching) {
-    return false
+    return false;
+  } else {
+    return watchlist.didInvalidate
   }
-  return dispatch(fetchWatchlists(authToken));
 }
 
 export function fetchWatchlistsIfNeeded(authToken) {

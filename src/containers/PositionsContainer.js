@@ -1,19 +1,19 @@
 import React, { Proptypes, Component } from 'react';
 import { connect } from 'react-redux';
-import Account from '../components/Account';
+import Positions from '../components/Account';
 
-class AccountContainer extends Component {
+class PositionsContainer extends Component {
   render() {
-    return <Account {...this.props} />;
+    return <Positions {...this.props} />;
   }
 }
 
 function mapStateToProps(state) {
-  const { authed, accountData } = state;
+  const { authed, position } = state;
 
   return {
     authed,
-    accountData
+    positions
   };
 }
 

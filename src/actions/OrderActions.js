@@ -69,3 +69,76 @@ export function gatherOrderInfo(orderId, authToken) {
 export function cancelOrder(authToken, order) {
   return { type: types.CANCEL_ORDER, order };
 }
+
+////////////////////////////////////////////////////////////////////////
+
+export const backToOrderPlacementPane = () => {
+    return {
+        type: 'BACK_TO_ORDER_PLACEMENT_PANE'
+    };
+}
+export const updateCurrentOrder = (options={}) => {
+    return {
+        type: 'UPDATE_CURRENT_ORDER',
+        options
+    };
+}
+export const resetCurrentOrder = (options={}) => {
+    return {
+        type: 'RESET_CURRENT_ORDER',
+        options
+    };
+}
+export function selectedOrderSide(fixedTitle, options={}) {
+    return (dispatch) => {
+        dispatch(resetCurrentOrder({
+            type: options.stockType,
+            symbol: options.symbol
+        }));
+        dispatch(initTitle(fixedTitle, options));
+        return Promise.resolve()
+    };
+}
+export function selectedOrderType(fixedTitle, options={}) {
+    return (dispatch) => {
+        dispatch(updateCurrentOrder({
+            type: options.stockType,
+        }));
+        dispatch(backToOrderPlacementPane());
+        return Promise.resolve()
+    };
+}
+export function selectedOrderTypeWithPrice(fixedTitle, options={}) {
+    let currentOrderOptions = {type: options.stockType};
+
+    if (currentOrderOptions.type == 'stop loss') {
+        currentOrderOptions.type = 'market';
+        currentOrderOptions.trigger = 'stop';
+    } else if (currentOrderOptions.type == 'stop limit') {
+        currentOrderOptions.type = 'limit';
+        currentOrderOptions.trigger = 'stop'
+    }
+    return (dispatch) => {
+        dispatch(updateCurrentOrder(currentOrderOptions));
+        dispatch(changeTitle(fixedTitle, options));
+        return Promise.resolve()
+    };
+}
+export function setOrderPrice(fixedTitle, options={}) {
+    return (dispatch) => {
+        dispatch(updateCurrentOrder({
+            price: options.price,
+        }));
+        dispatch(changeTitle(fixedTitle, options));
+        return Promise.resolve()
+    };
+}
+export function selectedTimeInForce(time_in_force) {
+    return (dispatch) => {
+        dispatch(updateCurrentOrder({
+            time_in_force,
+        }));
+        dispatch(backToOrderPlacementPane());
+        return Promise.resolve()
+    };
+}
