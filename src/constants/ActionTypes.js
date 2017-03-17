@@ -13,7 +13,7 @@ export const RECIEVE_LOGOUT = 'RECIEVE_LOGOUT';
 //        Portfolio Data         //
 /////////////////////////////////*/
 
-export const INVALIDATE_PORTFOLIO = 'INVALIDATE_PORTFOLIO'
+export const INVALIDATE_PORTFOLIO = 'INVALIDATE_PORTFOLIO';
 export const REQUEST_PORTFOLIO = 'REQUEST_PORTFOLIO';
 export const RECIEVE_PORTFOLIO = 'PORTFOLIO_SUCCESS';
 
@@ -52,7 +52,7 @@ export const GET_RG_MAINTENANCE = 'GET_RG_MAINTENANCE';
 /////////////////////////////////*/
 
 export const REQUEST_QUOTE = 'REQUEST_QUOTE';
-export const REQUEST_QUOTE_ERROR = 'REQUEST_QUOTE_ERROR'
+export const REQUEST_QUOTE_ERROR = 'REQUEST_QUOTE_ERROR';
 export const RECIEVE_QUOTE = 'RECIEVE_QUOTE';
 
 /* ////////////////////////////////

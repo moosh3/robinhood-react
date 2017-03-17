@@ -1,4 +1,4 @@
-import React, { Proptypes, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Positions from '../components/Account';
 
@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 
   return {
     authed,
-    positions
+    positions,
   };
 }
 

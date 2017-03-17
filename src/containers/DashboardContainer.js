@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dashboard from '../components/Dashboard';
 
@@ -10,6 +10,7 @@ class DashboardContainer extends Component {
 
 function mapStateToProps(state) {
   const { authed, apiData } = state;
+  
   return {
     auth,
     apiData

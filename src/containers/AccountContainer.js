@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 
   return {
     authed,
-    accountData
+    accountData,
   };
 }
 

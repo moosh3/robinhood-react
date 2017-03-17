@@ -22,10 +22,9 @@ export function constructWatchlistAddUrl(watchlist) {
 export function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
-  /* eslint-disable no-else-return prefer-const */
-  } else {
-    let error = new Error(response.statusText);
-    error.response = response;
-    throw error;
-  }
+  }/* else {
+    //let error = new Error(response.statusText);
+    //error.response = response;
+    //throw error;
+  }*/
 }

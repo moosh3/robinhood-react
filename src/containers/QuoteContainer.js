@@ -10,16 +10,15 @@ class QuoteContainer extends Component {
 
 function mapStateToProps(state) {
   const { authed, dispatch, quoteData, symbol } = state;
-  const { symbol } = quoteData[symbol]; // TODO
 
   return {
     authed,
     dispatch,
     quoteData,
-    symbol
+    symbol,
   };
 }
 
 
 
-export default connect(mapStateToProps)(SongContainer);
+export default connect(mapStateToProps)(QuoteContainer);

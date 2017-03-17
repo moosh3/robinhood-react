@@ -3,14 +3,15 @@ import React, { Component, PropTypes } from 'react';
 const Account = (props) => {
 
   render() {
-    return(
-
+    return (
+      const { authed, user } = this.props;
     );
   }
 }
 
-Account.PropTypes = {
-  authed: PropTypes.object.isRequired
+Account.propTypes = {
+  authed: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 }
 
 export default Account;

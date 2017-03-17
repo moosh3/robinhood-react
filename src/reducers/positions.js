@@ -5,19 +5,19 @@ const positionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.INVALIDATE_POSITIONS:
       return Object.assign({}, state, {
-        didInvalidate: true
+        didInvalidate: true,
       });
     case types.REQUEST_POSITIONS:
       return Object.assign({}, state, {
         isFetching: true,
-        didInvalidate: false
+        didInvalidate: false,
       });
     case types.RECEIVE_POSITIONS:
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
         lastUpdated: action.receivedAt,
-        items: action.positions
+        items: action.positions,
       });
     default:
       return state;

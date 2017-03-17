@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Order from '../components/Order';
 
@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 
   return {
     authed,
-    orderData
+    orderData,
   };
 }
 
