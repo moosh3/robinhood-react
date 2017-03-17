@@ -13,16 +13,16 @@ const quoteReducer = (state = initialState.quoteData, action) => {
       return {
         error: true,
         ...state,
-      }
+      };
     case types.RECIEVE_QUOTE:
       return {
         isFetching: false,
         quoteData: action.data,
         ...state,
-      }
+      };
     default:
       return state;
   }
-}
+};
 
 export default quoteReducer;

@@ -1,30 +1,30 @@
-import * from '../constants/ActionTypes';
+import * as types from '../constants/ActionTypes';
 
 const initialState = {
   isLoggedIn: true,
-}
+};
 
 const watchlistReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_WATCHLIST:
+    case types.CREATE_WATCHLIST:
       return {
         ...state,
       };
-    case GET_WATCHLISTS:
+    case types.GET_WATCHLISTS:
       return {
         ...state,
       };
-    case ADD_INSTRUMENT_TO_WATCHLIST:
+    case types.ADD_INSTRUMENT_TO_WATCHLIST:
       return {
         ...state,
       };
-    case DELETE_WATCHLIST_INSTRUMENT:
+    case types.DELETE_WATCHLIST_INSTRUMENT:
       return {
-        ...state
+        ...state,
       };
     default:
       return state;
   }
-}
+};
 
 export default watchlistReducer;

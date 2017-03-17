@@ -8,7 +8,7 @@ export const WDS_PORT = 8004;
 export const APP_CONTAINER_CLASS = 'js-app';
 export const APP_CONTAINER_SELECTOR = `.${APP_CONTAINER_CLASS}`;
 
-//=====================================
+//-------------------------------------
 //  API
 //-------------------------------------
 export const API_BASE_URL = 'https://api.robinhood.com';
