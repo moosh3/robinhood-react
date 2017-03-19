@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import fetchQuote from '../actions/QuoteActions';
 
-class Quote extends Component {
+class QuotePane extends Component {
   /* Quote component that is rendered when a user
   selects a singular quote to view fundamentals, basic
   info, etc. Should already have quoteData['symbol'], so
@@ -40,4 +40,4 @@ Quote.propTypes = {
   symbol: PropTypes.string.isRequired
 };
 
-export default Quote;
+export default QuotePane;
