@@ -13,6 +13,6 @@ class Spinner extends Component {
 Spinner.propTypes = {
   authed: PropTypes.objects.isRequired,
   isLoading: PropTypes.bool.isRequired,
-}
+};
 
 export default Spinner;

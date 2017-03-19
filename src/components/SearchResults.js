@@ -3,7 +3,7 @@ import _ from 'lodash';
 import shallowEqual from 'react-pure-render/shallowEqual';
 
 import SearchResultItem from './SearchResultItem';
-import Loader from './Loader';
+//import Spinner from './Spinner';
 
 import '../../assets/stylesheets/search-results.scss';
 
@@ -40,10 +40,10 @@ export default class SearchResults extends Component {
 
   render () {
     const { searchResults, onPackageOpen } = this.props;
-    let packages = searchResults.items || [];
-    let loading = _.get(searchResults, 'isFetching') || false;
+    const packages = searchResults.items || [];
+    const loading = _.get(searchResults, 'isFetching') || false;
 
-    let maxRank = _.max(_.map(packages, (item)=>item.rank));
+    const maxRank = _.max(_.map(packages, (item) => item.rank));
 
     return (
       <div>
@@ -70,7 +70,7 @@ export default class SearchResults extends Component {
     this.setState({
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight,
-      bounds: _.pick(bounds, ['bottom','height','left','right','top','width']),
+      bounds: _.pick(bounds, ['bottom', 'height', 'left', 'right', 'top', 'width']),
     });
   }
 
@@ -84,8 +84,6 @@ export default class SearchResults extends Component {
     const triggerPosition = (bounds.height - threshold);
 
     if ((scrollTop + windowHeight) > triggerPosition && !this.calledTriggerPositions[triggerPosition]) {
-      console.log('scroll end');
-
       this.calledTriggerPositions[triggerPosition] = true;
       if (onSearch) onSearch(search.term, search.next);
     }

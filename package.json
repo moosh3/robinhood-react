@@ -28,6 +28,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hot-loader": "next",
+    "react-pure-render": "^1.0.2",
     "react-redux": "^5.0.3",
     "react-router": "next",
     "react-router-dom": "next",

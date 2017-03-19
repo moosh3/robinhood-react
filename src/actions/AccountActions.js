@@ -1,6 +1,6 @@
-import { apiUrl, endpoints } from '../constants/Robin';
+import _ from 'lodash';
 import * as types from '../constants/ActionTypes';
-import { checkStatus, constructAccountIdUrl, constructAccountInfoUrl } from '../shared/Utils';
+import { checkStatus, accountIdUrl, accountInfoUrl } from '../shared/utils';
 
 /* ////////////////////////////////
 //        Account Actions        //
@@ -54,6 +54,41 @@ function recieveAccountID(response) {
   };
 }
 
+function fetchAccountID(authToken) {
+  return dispatch => {
+    dispatch(requestAccountID(authToken))
+    return fetch(accountIdUrl(), {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json, */*',
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${authToken}`
+      })
+      .then(checkStatus)
+      .then(response => response.json())
+      .then(json => dispatch(recieveAccountID(json)))
+  };
+}
+
+function shouldFetchAccountID(state, authToken) {
+  const id = state.user[id];
+  if (!id) {
+    return true;
+  }
+  if (id.isFetching) {
+    return false;
+  }
+  return true;
+}
+
+export function fetchAccountIdIfNeeded(authToken) {
+  return (dispatch, getState) => {
+    if (shouldFetchAccountID(getState(), authToken)) {
+      return dispatch(fetchAccountID(authToken))
+    }
+  };
+}
+
 function requestAccountInfo(authToken) {
   return: {
     type: types.REQUEST_ACCOUNT_INFO,
@@ -69,64 +104,32 @@ function recieveAccountInfo(response) {
   };
 }
 
-function fetchAccountID(authToken) {
-  return dispatch => {
-    dispatch(requestAccountID(authToken))
-    return fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json, */*',
-        'Content-Type': 'application/json',
-        'Authorization': `Token ${authToken}`
-      })
-      .then(response => response.json())
-      .then(json => dispatch(recieveAccountID(json)))
-  }
-}
-
-function shouldFetchAccountID(state, authToken) {
-  const id = state.user[id];
-  if (!id) {
-    return true;
-  }
-  if (id.isFetching) {
-    return false;
-  }
-  return true;
-}
-
-export function fetchPositionsIfNeeded(authToken) {
-  return (dispatch, getState) => {
-    if (shouldFetchAccountID(getState(), authToken)) {
-      return dispatch(fetchAccountID(authToken))
-    }
-  }
-}
-
 function fetchAccountInfo(authToken) {
   return dispatch => {
     dispatch(requestAccountInfo(authToken))
-    return fetch(url, {
+    return fetch(accountInfoUrl(), {
       method: 'GET',
       headers: {
         'Accept': 'application/json, */*',
         'Content-Type': 'application/json',
         'Authorization': `Token ${authToken}`
       })
+      .then(checkStatus)
       .then(response => response.json())
       .then(json => dispatch(recieveAccountInfo(json)))
   }
 }
 
 function shouldFetchAccountInfo(state, authToken) {
-  const accountInfo = state.user[info];
-  if (!accountInfo) {
+  const accountInfo = state.portfolio;
+
+  if (_.isEmpty(accountInfo)) {
     return true;
   }
   if (accountInfo.isFetching) {
     return false;
   }
-  return true;
+  return fetchAccountInfo(authToken);
 }
 
 export function fetchAccountInfoIfNeeded(authToken) {

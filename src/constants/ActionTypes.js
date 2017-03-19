@@ -77,3 +77,19 @@ export const CANCEL_ORDER_FAILURE = 'CANCEL_ORDER_FAILURE';
 
 export const GATHER_ORDER_INFO = 'GATHER_ORDER_INFO';
 export const GATHER_RECENT_ORDERS = 'GATHER_RECENT_ORDERS';
+
+/* ////////////////////////////////
+//        News  Data             //
+/////////////////////////////////*/
+
+export const REQUEST_NEWS = 'REQUEST_NEWS';
+export const RECIEVE_NEWS = 'RECIEVE_NEWS';
+export const REQUEST_NEWS_ERROR = 'REQUEST_NEWS_ERROR';
+
+/* ////////////////////////////////
+//        Movers  Data           //
+/////////////////////////////////*/
+
+export const REQUEST_MOVERS = 'REQUEST_MOVERS';
+export const RECIEVE_MOVERS = 'RECIEVE_MOVERS';
+export const REQUEST_MOVERS_ERROR = 'REQUEST_MOVERS_ERROR';

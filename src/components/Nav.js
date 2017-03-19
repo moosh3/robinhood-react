@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { loginUser, logoutUser } from '../actions/AuthedActions';
-import NavSearch from './components/NavSearch';
+import { loginUser, logoutUser } from '../actions/authActions';
 
 class Header extends Component {
 

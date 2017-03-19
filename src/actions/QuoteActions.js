@@ -1,6 +1,6 @@
-import { args, apiUrl, endpoints } from '../constants/Robin';
+import _ from 'lodash';
 import * as types from '../constants/ActionTypes';
-import { constructQuoteUrl, checkStatus } from '../shared/Utils';
+import { quoteUrl, checkStatus } from '../shared/utils';
 
 /* ////////////////////////////////
 //           Quote Data          //

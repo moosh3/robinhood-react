@@ -70,8 +70,7 @@ function fetchPortfolio(authToken) {
     })
     .then(checkStatus)
     .then(response => response.json())
-    .then(dispatch(recievePortfolio()))
-    .then(return response.json())
+    .then(dispatch(recievePortfolio(response)))
   };
 }
 
