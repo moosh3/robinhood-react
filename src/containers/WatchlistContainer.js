@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Positions from '../components/Account';
+import Watchlist from '../components/Watchlist';
 
-class PositionsContainer extends Component {
+class WatchlistContainer extends Component {
   render() {
-    return <Positions {...this.props} />;
+    return <Watchlist {...this.props} />;
   }
 }
 
@@ -17,4 +17,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(PositionsContainer);
+export default connect(mapStateToProps)(WatchlistContainer);

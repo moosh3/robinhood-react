@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Positions from '../components/Account';
 
-class PositionsContainer extends Component {
+class SettingsPage extends Component {
   render() {
-    return <Positions {...this.props} />;
+    return //<Watchlist {...this.props} />; TODO
   }
 }
 
@@ -17,4 +16,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(PositionsContainer);
+export default connect(mapStateToProps)(SettingsPage);

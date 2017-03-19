@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 
 // import { initAuth } from '../actions/AuthedActions';
 
-import NavContainer from './NavContainer';
+import Sidebar from '../components/Sidebar';
+import Search from '../components/Search';
+
 import QuoteContainer from './QuoteContainer';
 import PositionsContainer from './PositionsContainer';
+
+
 
 class App extends Component {
   componentDidMount() {
@@ -19,8 +23,10 @@ class App extends Component {
 
     return (
       <div>
-        <NavContainer />
-        <PositionsContainer />
+        <Sidebar />
+        <AccountPane />
+        <Search />
+        <PositionsContainer /> // TODO OR <SearchResults />
         <QuoteContainer />
       </div>
     );
