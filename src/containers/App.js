@@ -17,6 +17,9 @@ class App extends Component {
     // dispatch(initAuth()); TODO
   }
 
+  handleSubmit() {
+
+  }
 
   render() {
     const { authed, dispatch, errorMessage } = this.props;
@@ -25,7 +28,7 @@ class App extends Component {
       <div>
         <Sidebar />
         <AccountPane />
-        <Search />
+        <Search onSubmit={this.handleSubmit} />
         <PositionsContainer /> // TODO OR <SearchResults />
         <QuoteContainer />
       </div>

@@ -1,17 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 
-const Account = (props) => {
+
+class Account extends Component {
+
+  componentWillMount() {
+    if(!this.props.account.lastUpdated) {
+      this.props.fetchAccountIfNeeded();
+    }
+  }
 
   render() {
+    const { authed, account } = this.props;
+
     return (
-      const { authed, user } = this.props;
+      //TODO
     );
   }
 }
 
 Account.propTypes = {
   authed: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
+  account: PropTypes.object.isRequired,
 }
 
 export default Account;

@@ -10,4 +10,4 @@ const AboutPage = () => {
   };
 };
 
-export default AboutPage
+export default LandingPage;

@@ -9,11 +9,11 @@ class WatchlistContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const { authed, position } = state;
+  const { authed, watchlist } = state;
 
   return {
     authed,
-    positions,
+    watchlist,
   };
 }
 

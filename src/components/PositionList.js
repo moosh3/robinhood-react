@@ -1,13 +1,30 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
 import { formatCurrency, formatPercent } from '../lib/formaters';
+import { fetchPosition, fetchPositionsIfNeeded } from '../actions/positionActions';
+
+class Position extends Component {
+
+  componentWillMount() {
+    const { dispatch, symbol } = this.props;
+    dispatch(fetchPosition(symbol));
+  }
+
+  render() {
+    const { authed, position } = this.props;
+
+    return (
+      //TODO
+    );
+  }
+
+}
 
 class PositionList extends Component {
 
   componentWillMount() {
-    this.props.dispatch(
-      fetchPositionsIfNeeded();
-    );
+    const { dispatch, positions } = this.props;
+    dispatch(fetchPositionsIfNeeded(symbol));
   }
 
   render() {
