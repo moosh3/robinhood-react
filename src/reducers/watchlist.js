@@ -1,16 +1,24 @@
 import * as types from '../constants/ActionTypes';
 
-const initialState = {
-  isLoggedIn: true,
-};
-
-const watchlistReducer = (state = initialState, action) => {
+const watchlistReducer = (state = {}, action) => {
   switch (action.type) {
-    case types.CREATE_WATCHLIST:
+    case types.INVALIDATE_WATCHLISTS:
       return {
+        invalidated: true,
+        ...state,
+      }
+    case types.REQUEST_WATCHLIST:
+      return {
+        isFetching: true,
         ...state,
       };
-    case types.GET_WATCHLISTS:
+    case types.RECEIVE_WATCHLIST:
+      return {
+        isFetching: false,
+        items: action.watchlist,
+        lastUpdated: action.receivedAt, 
+      }
+    case types.CREATE_WATCHLIST:
       return {
         ...state,
       };

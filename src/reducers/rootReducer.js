@@ -7,7 +7,7 @@ import orderReducer from './order';
 
 const rootReducer = combineReducers({
   quoteReducer,
-  authenticationReducer,
+  authReducer,
   userReducer,
   positionsReducer,
   orderReducer,

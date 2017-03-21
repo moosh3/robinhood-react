@@ -5,36 +5,33 @@ const authenticationReducer = (state = initialState.accountData.auth, action) =>
   switch (action.type) {
     case types.LOGIN_ATTEMPT:
       return {
-        ...state,
         isLoggingIn: true,
-        isLoggedIn: false,
+        authed: false,
         username: action.username,
         password: action.password,
+        ...state,
       };
     case types.LOGIN_SUCCESS:
       return {
-        ...state,
         isLoggingIn: false,
-        isLoggedIn: true,
+        authed: true,
         authToken: action.authToken,
+        ...state,
       };
     case types.LOGIN_FAILURE:
       return {
-        ...state,
-        isLoggedIn: false,
+        authed: false,
         error: action.error,
+        ...state,
       };
     case types.LOGOUT:
       return {
-        ...state,
         isLoggedIn: false,
-        username: '',
-        password: '',
-        authToken: '',
+        ...state,
       };
     default:
       return state;
   }
 };
 
-export default authenticationReducer;
+export default authReducer;

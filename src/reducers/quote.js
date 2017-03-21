@@ -18,6 +18,7 @@ const quoteReducer = (state = initialState.quoteData, action) => {
       return {
         isFetching: false,
         quoteData: action.data,
+        lastUpdated: action.receivedAt, 
         ...state,
       };
     default:

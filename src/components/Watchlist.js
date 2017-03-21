@@ -21,7 +21,7 @@ class Watchlist extends Component {
 }
 
 Watchlist.propTypes = {
-  authed: PropTypes.bool,
+  authed: PropTypes.object.isRequired,
   watchlist: PropTypes.object.isRequired,
 }
 
