@@ -1,25 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Account from '../components/Account';
+import { fetchAccountIfNeeded } from '../actions/accountActions';
 
-class AccountContainer extends Component {
-  render() {
-    return <Account {...this.props} />;
+const mapStateToProps = (state) => ({
+  account: state.account,
+  authed: state.authed,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchAccountIfNeeded: () => {
+    dispatch(fetchAccountIfNeeded());
   }
-}
+})
 
-const mapStateToProps = (state) => {
-  const { authed, data } = state;
+const AccountPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Account)
 
-  return {
-    authed,
-    accountData,
-  };
-}
-
-AccountContainer.propTypes = {
-  authed: PropTypes.object.isRequired,
-  data: PropTypes.object,
-}
-
-export default connect(mapStateToProps)(AccountContainer);
+export default AccountPage;

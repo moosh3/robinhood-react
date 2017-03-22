@@ -23,8 +23,8 @@ class Position extends Component {
 class PositionList extends Component {
 
   componentWillMount() {
-    const { dispatch, positions } = this.props;
-    dispatch(fetchPositionsIfNeeded(symbol));
+    const { authed, account, positions } = this.props;
+    dispatch(fetchPositionsIfNeeded(account));
   }
 
   render() {
@@ -52,7 +52,8 @@ class PositionList extends Component {
 
 Positions.propTypes = {
   authed: PropTypes.object.isRequired,
-  positions: PropTypes.object.isRequired
+  account: PropTypes.object.isRequired,
+  positions: PropTypes.object.isRequired,
 }
 
 export default PositionList;
