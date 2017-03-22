@@ -8,7 +8,6 @@ const configureStore = (initialState) => {
   const persistedState = loadState();
   const store = createStore(
     rootReducer,
-    initialState,
     applyMiddleware(thunk),
   );
 

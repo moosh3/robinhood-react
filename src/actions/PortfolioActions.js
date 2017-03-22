@@ -34,13 +34,6 @@ import { checkStatus } from '../shared/Utils';
   }
 */
 
-export const invalidatePortfolio = (portfolio) => {
-  return {
-    type: types.INVALIDATE_PORTFOLIO,
-    portfolio
-  }
-}
-
 export function requestPortfolio(authToken) {
   return {
     type: types.REQUEST_PORTFOLIO,
