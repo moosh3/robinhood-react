@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 class SettingsPage extends Component {
@@ -8,12 +8,17 @@ class SettingsPage extends Component {
 }
 
 function mapStateToProps(state) {
-  const { authed, position } = state;
+  const { authed, account } = state;
 
   return {
     authed,
-    positions,
+    account,
   };
+}
+
+SettingsPage.propTypes = {
+  authed: PropTypes.object.isRequired,
+  account: PropTypes.object.isRequired,
 }
 
 export default connect(mapStateToProps)(SettingsPage);

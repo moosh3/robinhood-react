@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import TextInput from './common/TextInput';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as sessionActions from '../actions/sessionActions';
 
-class LoginPage extends React.Component {
+class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {credentials: {email: '', password: ''}}
@@ -47,6 +47,10 @@ class LoginPage extends React.Component {
             onClick={this.onSave}/>
     );
   }
+}
+
+LoginPage.propTypes = {
+
 }
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import QuoteDetail from '../components/QuoteDetail';
 
@@ -9,14 +9,19 @@ class QuoteContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const { authed, dispatch, quoteData, symbol } = state;
+  const { authed, quote, account } = state;
 
   return {
     authed,
-    dispatch,
-    quoteData,
-    symbol,
+    account,
+    quote,
   };
+}
+
+QuoteContainer.propTypes = {
+  authed: PropTypes.object.isRequired,
+  account: PropTypes.object.isRequired,
+  quote: PropTypes.object.isRequired,
 }
 
 export default connect(mapStateToProps)(QuoteContainer);

@@ -1,4 +1,4 @@
-import React, { Proptypes, Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import History from '../components/History';
 
@@ -9,7 +9,7 @@ class HistoryPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { authed, accountData } = state;
+  const { authed, data } = state;
 
   return {
     authed,
