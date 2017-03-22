@@ -8,7 +8,7 @@ class AccountContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   const { authed, accountData } = state;
 
   return {

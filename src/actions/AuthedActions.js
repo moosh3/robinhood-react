@@ -106,24 +106,48 @@ function fetchAuthedUser(authToken) {
   }
 }
 
-export function postLogin(credentials) {
-  return {type: types.POST_LOGIN, credentials};}
+function postLogin(credentials) {
+  return {
+    type: types.POST_LOGIN,
+    credentials,
+  };
+}
 
-export function loginSuccess(authToken) {
-  return {type: types.LOGIN_SUCCESS, authToken};}
+function loginSuccess(authToken) {
+  return {
+    type: types.LOGIN_SUCCESS,
+    authToken,
+  };
+}
 
-export function loginFailure(error) {
-  return {type: types.LOGIN_FAILURE, error};}
+function loginFailure(error) {
+  return {
+    type: types.LOGIN_FAILURE,
+    error
+  };
+}
 
 /* ////////////////////////////////
 //        Robinhood Gold         //
 /////////////////////////////////*/
 
 function fetchVolatility(equity) {
-  return {type: types.FETCH_RG_VOLATILITY, equity};}
+  return {
+    type: types.FETCH_RG_VOLATILITY,
+    equity
+  };
+}
 
 function fetchInitialRequirements(equity) {
-  return {type: types.FETCH_RG_INITIAL_REQUIREMENTS, equity};}
+  return {
+    type: types.FETCH_RG_INITIAL_REQUIREMENTS,
+    equity,
+  };
+}
 
 function fetchMaintenance(equity) {
-  return {type: types.FETCH_RG_MAINTENANCE, equity};}
+  return {
+    type: types.FETCH_RG_MAINTENANCE,
+    equity
+  };
+  }

@@ -40,17 +40,17 @@ AccountInfo
 */
 
 function requestAccountID(authToken) {
-  return: {
+  return {
     type: types.REQUEST_ACCOUNT_ID,
     authToken,
   };
 }
 
 function recieveAccountID(response) {
-  return: {
+  return {
     type: types.RECIEVE_ACCOUNT_ID,
     response,
-    recievedAt: Date.now()
+    recievedAt: Date.now(),
   };
 }
 

@@ -9,26 +9,22 @@ import { newsUrl, topMoversUrl } from '../lib/utils';
 //           Quote News         //
 /////////////////////////////////*/
 
-export function requestNews(symbol) {
-  return: {
-    type: types.REQUEST_NEWS, symbol}
-  ;
-}
+export const requestNews = (symbol) => ({
+  type: types.REQUEST_NEWS,
+  symbol,
+})
 
-export function receieveNews(instrument, json) {
-  return {
-    type: types.RECIEVE_NEWS,
-    data: json.data.children.map(child => child.data),
-    instrument,
-    recievedAt: Date.now(),
-}
+export const receieveNews = (instrument, json) => ({
+  type: types.RECIEVE_NEWS,
+  data: json.data.children.map(child => child.data),
+  instrument,
+  recievedAt: Date.now(),
+})
 
-export function requestNewsError(bool) {
-  return {
-    type: types.REQUEST_NEWS_ERROR,
-    error: bool,
-  };
-}
+export const requestNewsError = (bool) => ({
+  type: types.REQUEST_NEWS_ERROR,
+  error: bool,
+})
 
 function fetchNews(instrument) {
   return dispatch => {
@@ -69,26 +65,21 @@ export function fetchNewsIfNeeded(instrument) {
 //          Top movers          //
 /////////////////////////////////*/
 
-export function requestMovers(direction) {
-  return: {
-    type: types.REQUEST_MOVERS, direction,
-  };
-}
+export const requestMovers = (direction) => ({
+  type: types.REQUEST_MOVERS, direction,
+})
 
-export function recieveMovers(direction, json) {
-  return {
-    type: types.RECIEVE_MOVERS,
-    data: json.data.children.map(child => child.data),
-    direction,
-    recievedAt: Date.now(),
-}
+export const recieveMovers = (direction, json) => ({
+  type: types.RECIEVE_MOVERS,
+  data: json.data.children.map(child => child.data),
+  direction,
+  recievedAt: Date.now(),
+})
 
-export function requestMoversError(bool) {
-  return {
-    type: types.REQUEST_MOVERS_ERROR,
-    error: bool,
-  };
-}
+export const requestMoversError = (bool) => ({
+  type: types.REQUEST_MOVERS_ERROR,
+  error: bool,
+})
 
 function fetchNews(direction) {
   return dispatch => {

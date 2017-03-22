@@ -1,13 +1,26 @@
 import { createStore, applyMiddleware } from 'redux';
+import throttle from 'lodash/throttle';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers/rootReducer';
+import { loadState, saveState } from './localStorage';
 
-export default function configureStore(initialState) {
+const configureStore = (initialState) => {
+  const persistedState = loadState();
   const store = createStore(
-      rootReducer,
-      initialState,
-      applyMiddleware(thunk),
-    );
+    rootReducer,
+    initialState,
+    applyMiddleware(thunk),
+  );
+
+  store.subscribe(throttle(() => {
+    saveState({
+      todos: store.getState().todos
+    })
+  }, 1000))
 
   return store;
 }
+
+// By exporting configureStore instead of just store, we will
+// be able to create as many store instances as we want for testing.
+export default configureStore;
