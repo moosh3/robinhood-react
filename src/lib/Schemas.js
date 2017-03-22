@@ -1,7 +1,4 @@
-import { Schema } from 'normalizr';
+import { Schema, arrayOf } from 'normalizr';
 
-const user = new Schema('user');
-const quote = new Schema('quote');
-
-export const userSchema = user;
-export const quoteSchema = quote;
+export const user = new Schema('user');
+export const quote = new Schema('quote');

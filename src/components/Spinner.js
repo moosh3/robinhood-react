@@ -4,8 +4,14 @@ class Spinner extends Component {
   render() {
     const { authed, isLoading } = this.props;
 
+    /*
+    if (isLoading && !data.something) {
+      return <p>Loading...</p>
+    }
+    */
+
     return (
-      <h1>Spinner</h1>
+      <p>Spinner</p>
     );
   }
 }
