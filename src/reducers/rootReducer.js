@@ -8,7 +8,7 @@ import orderReducer from './order';
 const rootReducer = combineReducers({
   quoteReducer,
   authReducer,
-  userReducer,
+  accountReducer,
   positionsReducer,
   orderReducer,
 });

@@ -71,8 +71,8 @@ function fetchAccountID(authToken) {
 }
 
 function shouldFetchAccountID(state, authToken) {
-  const id = state.user[id];
-  if (!id) {
+  const id = state.account.id;
+  if (_.isEmpty(id)) {
     return true;
   }
   if (id.isFetching) {
@@ -121,7 +121,7 @@ function fetchAccountInfo(authToken) {
 }
 
 function shouldFetchAccountInfo(state, authToken) {
-  const accountInfo = state.portfolio;
+  const accountInfo = state.account;
 
   if (_.isEmpty(accountInfo)) {
     return true;

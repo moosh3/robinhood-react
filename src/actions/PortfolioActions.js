@@ -75,7 +75,7 @@ function fetchPortfolio(authToken) {
 }
 
 function shouldFetchPortfolio(state) {
-  const portfolio = state.portfolio;
+  const portfolio = state.account.portfolio;
 
   if (_.isEmpty(portfolio)) {
     return true;

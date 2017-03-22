@@ -1,4 +1,3 @@
-import { apiUrl, endpoints } from '../constants/Robin';
 import * as types from '../constants/ActionTypes';
 import { checkStatus } from '../shared/Utils';
 import { fetchWatchlists } from './WatchlistActions';
@@ -57,7 +56,7 @@ function loginUser(credentials) {
 
 function loginSuccessPre(authToken) {
   return dispatch => {
-    dispatch(fetchAuthedUser(authToken));
+    dispatch(authUser(authToken));
     dispatch(fetchAccountInfo(authToken));
     dispatch(fetchAccountID(authToken));
     dispatch(fetchWatchlists(authToken));
@@ -91,21 +90,6 @@ function initAuth() {
   };
 }
 
-function fetchAuthedUser(authToken) {
-  var url = apiUrl + endpoints[accounts]// User data
-  return dispatch => {
-    fetch(url, {
-      method: 'GET'
-      headers: {
-          'Accept': 'application/json, */*',
-          'Content-Type': 'application/json',
-          'Authorization': `Token ${authToken}`,
-      })
-    .then(checkStatus)
-    .then(response => response.json())
-  }
-}
-
 function postLogin(credentials) {
   return {
     type: types.POST_LOGIN,
@@ -123,7 +107,7 @@ function loginSuccess(authToken) {
 function loginFailure(error) {
   return {
     type: types.LOGIN_FAILURE,
-    error
+    error,
   };
 }
 

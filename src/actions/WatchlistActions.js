@@ -101,7 +101,7 @@ function fetchWatchlists(authToken, watchlist) {
 }
 
 function shouldFetchWatchlists(authToken) {
-  const watchlists = state.user[watchlists];
+  const watchlists = state.account.watchlists;
 
   if (_.isEmpty(watchlists)) {
     return true;

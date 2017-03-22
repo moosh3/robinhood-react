@@ -1,8 +1,6 @@
 import * as types from '../constants/ActionTypes';
-import initialState from './initialState';
 
-
-const quoteReducer = (state = initialState.quoteData, action) => {
+const quoteReducer = (state = {}, action) => {
   switch (action.type) {
     case types.REQUEST_QUOTE:
       return {
@@ -17,8 +15,8 @@ const quoteReducer = (state = initialState.quoteData, action) => {
     case types.RECIEVE_QUOTE:
       return {
         isFetching: false,
-        quoteData: action.data,
-        lastUpdated: action.receivedAt, 
+        quote: action.data,
+        lastUpdated: action.receivedAt,
         ...state,
       };
     default:

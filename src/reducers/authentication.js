@@ -1,14 +1,11 @@
 import * as types from '../constants/ActionTypes';
-import initialState from './initialState';
 
-const authenticationReducer = (state = initialState.accountData.auth, action) => {
+const authenticationReducer = (state = {}, action) => {
   switch (action.type) {
     case types.LOGIN_ATTEMPT:
       return {
         isLoggingIn: true,
         authed: false,
-        username: action.username,
-        password: action.password,
         ...state,
       };
     case types.LOGIN_SUCCESS:

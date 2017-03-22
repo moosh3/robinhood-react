@@ -14,7 +14,7 @@ const configureStore = (initialState) => {
 
   store.subscribe(throttle(() => {
     saveState({
-      todos: store.getState().todos
+      account: store.getState().account,
     })
   }, 1000))
 
