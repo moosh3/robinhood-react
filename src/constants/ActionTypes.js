@@ -10,10 +10,18 @@ export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
 export const RECIEVE_LOGOUT = 'RECIEVE_LOGOUT';
 
 /* ////////////////////////////////
+//        Account Data           //
+/////////////////////////////////*/
+
+export const REQUEST_ACCOUNT_ID = 'REQUEST_ACCOUNT_ID';
+export const RECIEVE_ACCOUNT_ID = 'RECIEVE_ACCOUNT_ID';
+export const REQUEST_ACCOUNT_INFO = 'REQUEST_ACCOUNT_INFO';
+export const RECIEVE_ACCOUNT_INFO = 'RECIEVE_ACCOUNT_INFO';
+
+/* ////////////////////////////////
 //        Portfolio Data         //
 /////////////////////////////////*/
 
-export const INVALIDATE_PORTFOLIO = 'INVALIDATE_PORTFOLIO';
 export const REQUEST_PORTFOLIO = 'REQUEST_PORTFOLIO';
 export const RECIEVE_PORTFOLIO = 'PORTFOLIO_SUCCESS';
 
@@ -21,7 +29,6 @@ export const RECIEVE_PORTFOLIO = 'PORTFOLIO_SUCCESS';
 //        Positions Data         //
 /////////////////////////////////*/
 
-export const INVALIDATE_POSITIONS = 'INVALIDATE_POSITIONS';
 export const REQUEST_POSITIONS = 'REQUEST_POSITIONS';
 export const RECIEVE_POSITIONS = 'RECIEVE_POSITIONS';
 
@@ -29,7 +36,6 @@ export const RECIEVE_POSITIONS = 'RECIEVE_POSITIONS';
 //        Watchlist Actions      //
 ////////////////////////////////*/
 
-export const INVALIDATE_WATCHLISTS = 'INVALIDATE_WATCHLISTS';
 export const REQUEST_WATCHLISTS = 'REQUEST_WATCHLISTS';
 export const RECIEVE_WATCHLISTS = 'RECIEVE_WATCHLISTS';
 

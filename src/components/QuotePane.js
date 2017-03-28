@@ -40,4 +40,15 @@ Quote.propTypes = {
   symbol: PropTypes.string.isRequired
 };
 
+const mapStateToProps = (state) => {
+  return { user: state.app.user }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    reset: () => { dispatch(Actions.resetApp()) },
+    setUser: (user) => { dispatch(Actions.setUser(user)) },
+  }
+}
+
 export default QuotePane;

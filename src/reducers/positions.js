@@ -5,6 +5,7 @@ const positionsReducer = (state = {}, action) => {
     case types.REQUEST_POSITIONS:
       return {
         isFetching: true,
+        lastUpdated: action.receivedAt,
       };
     case types.RECEIVE_POSITIONS:
       return {

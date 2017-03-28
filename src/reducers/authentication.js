@@ -2,28 +2,30 @@ import * as types from '../constants/ActionTypes';
 
 const authenticationReducer = (state = {}, action) => {
   switch (action.type) {
-    case types.LOGIN_ATTEMPT:
+    case types.REQUEST_AUTH:
       return {
         isLoggingIn: true,
         authed: false,
         ...state,
       };
-    case types.LOGIN_SUCCESS:
+    case types.RECIEVE_AUTH:
       return {
         isLoggingIn: false,
         authed: true,
         authToken: action.authToken,
         ...state,
       };
-    case types.LOGIN_FAILURE:
+    case types.RECIEVE_AUTH_TOKEN:
       return {
-        authed: false,
+        authed: true,
         error: action.error,
+        authToken: action.authToken,
         ...state,
       };
-    case types.LOGOUT:
+    case types.AUTH_FAILURE:
       return {
-        isLoggedIn: false,
+        authed: false,
+        error: true,
         ...state,
       };
     default:
