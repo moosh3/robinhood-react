@@ -2,12 +2,12 @@
 //        Authentication        //
 /////////////////////////////////*/
 
-export const REQUEST_LOGIN = 'REQUEST_LOGIN';
-export const RECIEVE_LOGIN = 'RECIEVE_LOGIN';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const REQUEST_AUTH = 'REQUEST_AUTH';
+export const RECIEVE_AUTH = 'RECIEVE_AUTH';
+export const RECIEVE_AUTH_TOKEN = 'RECIEVE_AUTH_TOKEN';
+export const AUTH_FAILURE = 'LOGIN_FAILURE';
 
 export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
-export const RECIEVE_LOGOUT = 'RECIEVE_LOGOUT';
 
 /* ////////////////////////////////
 //        Account Data           //

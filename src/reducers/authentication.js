@@ -28,6 +28,11 @@ const authenticationReducer = (state = {}, action) => {
         error: true,
         ...state,
       };
+    case types.REQUEST_LOGOUT:
+      return {
+        authed: false,
+        authToken: null,
+      };
     default:
       return state;
   }

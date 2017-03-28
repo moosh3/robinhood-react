@@ -1,13 +1,13 @@
 import * as types from '../constants/ActionTypes';
 
-const positionsReducer = (state = {}, action) => {
+const portfolioReducer = (state = {}, action) => {
   switch (action.type) {
-    case types.REQUEST_POSITIONS:
+    case types.REQUEST_PORTFOLIO:
       return {
         isFetching: true,
         lastUpdated: action.receivedAt,
       };
-    case types.RECEIVE_POSITIONS:
+    case types.RECIEVE_PORTFOLIO:
       return {
         isFetching: false,
         lastUpdated: action.receivedAt,
@@ -23,4 +23,4 @@ const positionsReducer = (state = {}, action) => {
   }
 };
 
-export default positionsReducer;
+export default portfolioReducer;

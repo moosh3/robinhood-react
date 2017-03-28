@@ -90,23 +90,30 @@ function initAuth() {
   };
 }
 
-function postLogin(credentials) {
+function requestAuth(credentials) {
   return {
-    type: types.POST_LOGIN,
+    type: types.REQUEST_AUTH,
     credentials,
   };
 }
 
-function loginSuccess(authToken) {
+function recieveAuth(authToken) {
   return {
-    type: types.LOGIN_SUCCESS,
+    type: types.RECIEVE_AUTH,
     authToken,
   };
 }
 
-function loginFailure(error) {
+function receiveAccessToken(accessToken) {
   return {
-    type: types.LOGIN_FAILURE,
+    type: types.RECEIVE_ACCESS_TOKEN,
+    accessToken,
+  };
+}
+
+function authFailure(error) {
+  return {
+    type: types.AUTH_FAILURE,
     error,
   };
 }

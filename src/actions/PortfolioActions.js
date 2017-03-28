@@ -50,6 +50,13 @@ export function recievePortfolio(response) {
   };
 }
 
+export function requestPortfolioError() {
+  return {
+    type: types.REQUEST_PORTFOLIO_ERROR,
+    recievedAt: Date.now()
+  };
+}
+
 function fetchPortfolio(authToken) {
   let url = apiUrl + endpoints[portfolio];
   return dispatch => {
@@ -63,7 +70,7 @@ function fetchPortfolio(authToken) {
     })
     .then(checkStatus)
     .then(response => response.json())
-    .then(dispatch(recievePortfolio(response)))
+    .then(dispatch(recievePortfolio(json)))
   };
 }
 
@@ -129,13 +136,6 @@ export function fetchPortfolioIfNeeded(authToken) {
       ]
     }
 */
-
-export const invalidatePositions = (positions) => {
-  return {
-    type: types.INVALIDATE_POSITIONS,
-    positions
-  }
-}
 
 function requestPositions(authToken) {
   return: {
