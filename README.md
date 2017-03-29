@@ -29,6 +29,20 @@ Below is a quick reference to the code base, mainly to give structure to the flo
 
 You can find the style guide for writing react components and their redux counterparts [in our wiki](https://github.com/aleccunningham/robinhood-react/wiki/Style-Guide).
 
+## Helper packages
+
+- [react-notie]('https://github.com/vkbansal/react-notie')
+- [title-decorator]('https://github.com/gigobyte/react-document-title-decorator')
+- [reselect]('https://github.com/reactjs/reselect')
+- [normalizr]('https://github.com/paularmstrong/normalizr')
+- [upup]('https://github.com/TalAter/UpUp')
+- [js-cookie]('https://github.com/js-cookie/js-cookie')
+- babel
+- react
+- redux
+- react-router
+- webpack
+
 ## Project Structure
 
 ```
@@ -138,156 +152,4 @@ You can find the style guide for writing react components and their redux counte
   - linked accounts
   - transfer to robinhood
   - transfer to bank
-```
-
-### State hoisting
-
-```Javascript
-class NameContainer extends React.Component {
-  render() {
-    return <Name onChange={newName => alert(newName)}/>
-  }
-}
-
-const Name = ({ onChange }) =>
-  <input onChange={e => onChange(e.target.value)}/>
-```
-
-
-### Normalized data
-
-```Javascript
-const data = normalize(response, arrayOf(schema.user))
-
-state = _.merge(state, data.entities)  
-```
-
-
-### Inline-list iteration
-
-```Javascript
-return (
-  <div>
-    {this.props.list.map(function (data, i) {
-      return (<Component data={data} key={i}/>)
-    })}
-  </div>
-);
-
-// Another example sorta
-
-const SearchSuggestions = (props) => {
-  // renderSearchSuggestion() behaves as a pseduo SearchSuggestion component
-  // keep it self contained and it should be easy to extract later if needed
-  const renderSearchSuggestion = listItem => (
-    <li key={listItem.id}>{listItem.name} {listItem.id}</li>
-  );
-
-  return (
-    <ul>
-      {props.listItems.map(renderSearchSuggestion)}
-    </ul>
-  );
-};
-```
-
-### Ensured button
-
-```Javascript
-const Button = props => <button type="button" {...props}>
-```
-
-###Conditionls in JSX
-
-```Javascript
-// Instead of
-const sampleComponent = () => {
-  return isTrue ? <p>True!</p> : <none/>
-};
-// Use short circut evaluation
-const sampleComponent = () => {
-  return isTrue && <p>True!</p>
-};
-```
-
-### Class methods with arrow function
-
-```Javascript
-/**
- * Class methods (using arrow functions)
- * With class components, when you pass methods to subcomponents, you have to ensure that they have the right `this` when they’re called.
- * This is usually achieved by passing this.handleSubmit.bind(this) to the subcomponent.
- * However using arrow functions does not create its own this context, so this has its original meaning from the enclosing context.
- */
-
-class ProfileContainer extends Component {
-  state = {activeProfile: false};
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.model.save()
-  };
-
-  handleNameChange = (e) => {
-    this.props.model.changeName(e.target.value)
-  };
-
-  handleExpand = (e) => {
-    e.preventDefault();
-    this.setState({activeProfile: !this.state.activeProfile})
-  };
-
-  render() {
-    return (
-      <div>
-        Is Profile Active: {this.state.activeProfile}
-      </div>
-    );
-  }
-}
-```
-
-### JSX Spread Attributes
-
-```Javascript
-// Spread Attributes is a JSX feature. It’s syntactic sugar for passing all of
-// an object’s properties as JSX attributes.
-
-// These two examples are equivalent.
-
-// props written as attributes
-let main = () => <main className="main" role="main">{children}</main>;
-
-// props "spread" from object
-// Note: `children` key is used to populate the component children.
-let main = () => <main {...{className: "main", role: "main", children}} />;
-
-// Use this to forward props to underlying components.
-let FancyDiv = (props) => <div className="fancy" {...props} />;
-
-// Now, I can expect FancyDiv to add the attributes it's concerned with as well
-// as those it's not.
-let FancyDiv = () => <FancyDiv data-id="my-fancy-div">So Fancy</FancyDiv>;
-// output: <div className="fancy" data-id="my-fancy-div">So Fancy</div>
-
-// Keep in mind that order matters. If props.className is defined, it'll clobber
-// the className defined by FancyDiv
-let FancyDiv = () => <FancyDiv className="my-fancy-div"/>;
-// output: <div className="my-fancy-div"></div>
-
-// We can make FancyDivs className always “win” by placing it after
-// the spread props ({...props}).
-
-// my `className` clobbers your `className`
-const FancyDiv = props =>
-  <div {...props} className="fancy"/>;
-// You should handle these types of props gracefully. In this case, I’ll merge
-// the author’s props.className with the className needed to style my component.
-
-const FancyDiv = ({ className, ...props }) => (
-  <div
-    className={["fancy", className].join(' ')}
-    {...props}
-  />
-);
 ```
