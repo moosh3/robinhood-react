@@ -31,12 +31,12 @@ You can find the style guide for writing react components and their redux counte
 
 ## Helper packages
 
-- [react-notie]('https://github.com/vkbansal/react-notie')
-- [title-decorator]('https://github.com/gigobyte/react-document-title-decorator')
-- [reselect]('https://github.com/reactjs/reselect')
-- [normalizr]('https://github.com/paularmstrong/normalizr')
-- [upup]('https://github.com/TalAter/UpUp')
-- [js-cookie]('https://github.com/js-cookie/js-cookie')
+- [react-notie](https://github.com/vkbansal/react-notie)
+- [title-decorator](https://github.com/gigobyte/react-document-title-decorator)
+- [reselect](https://github.com/reactjs/reselect)
+- [normalizr](https://github.com/paularmstrong/normalizr)
+- [upup](https://github.com/TalAter/UpUp)
+- [js-cookie](https://github.com/js-cookie/js-cookie)
 - babel
 - react
 - redux
