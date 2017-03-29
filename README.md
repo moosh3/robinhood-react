@@ -37,6 +37,7 @@ You can find the style guide for writing react components and their redux counte
 - [normalizr](https://github.com/paularmstrong/normalizr)
 - [upup](https://github.com/TalAter/UpUp)
 - [js-cookie](https://github.com/js-cookie/js-cookie)
+- [recompose](https://github.com/acdlite/recompose#composition)
 - babel
 - react
 - redux

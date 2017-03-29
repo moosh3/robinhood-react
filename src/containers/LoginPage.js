@@ -7,7 +7,7 @@ import * as sessionActions from '../actions/sessionActions';
 class LoginPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {credentials: {email: '', password: ''}}
+    this.state = {user: '', password: ''}};
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
   }
