@@ -3,6 +3,15 @@ import _ from 'lodash';
 import SearchResults from '../components/SearchResults';
 
 class Search extends Component {
+
+  handleSubmit() {
+
+  }
+
+  handleChange() {
+
+  }
+  
   render () {
     const { authed, handleSubmit, handleChange } = this.props;
     return (
