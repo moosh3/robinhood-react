@@ -1,5 +1,7 @@
 # Robinhood React
 
+## WORK IN PROGRESS 
+
 This packages uses [Robinhoods API](https://github.com/sanko/Robinhood) allowing you to use Robinhood in your browser. Limited to (well designed!) mobile apps no more!
 
 Check out the [Trello board](https://trello.com/b/A6Kpou2w/robinhood-react) to stay up to date on the development!
