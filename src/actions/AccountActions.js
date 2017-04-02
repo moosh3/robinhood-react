@@ -121,9 +121,9 @@ function fetchAccountInfo(authToken) {
 }
 
 function shouldFetchAccountInfo(state, authToken) {
-  const accountInfo = state.account;
+  const info = state.account.info;
 
-  if (_.isEmpty(accountInfo)) {
+  if (_.isEmpty(info)) {
     return true;
   }
   if (accountInfo.isFetching) {

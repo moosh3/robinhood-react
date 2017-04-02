@@ -16,6 +16,6 @@ const mapDispatchToProps = (dispatch) => ({
 const HistoryPage = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Watchlist)
+)(History)
 
 export default HistoryPage;
