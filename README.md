@@ -2,6 +2,12 @@
 
 ## WORK IN PROGRESS 
 
+UI built by [Jason Maurer](https://github.com/jsonmaur/robinhood-web)!
+
+![Imgur](http://i.imgur.com/JCAoxSE.png)
+
+
+
 This packages uses [Robinhoods API](https://github.com/sanko/Robinhood) allowing you to use Robinhood in your browser. Limited to (well designed!) mobile apps no more!
 
 Check out the [Trello board](https://trello.com/b/A6Kpou2w/robinhood-react) to stay up to date on the development!
